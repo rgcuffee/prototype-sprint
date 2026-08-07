@@ -94,8 +94,8 @@ const offerings: Offering[] = [
         title: "Launch access",
         note: "Required only for the services in scope.",
         items: [
-          "Netlify account with form detection enabled",
-          "Domain registrar or DNS access",
+          "Netlify account (free)",
+          "Domain registrar or DNS access (if applicable)",
           "Email destination for form notifications",
           "Analytics account or measurement decision",
           "Social sharing title and description",

@@ -216,13 +216,17 @@ export function ChecklistHub() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(STORAGE_KEY);
-      if (saved) setChecked(JSON.parse(saved));
-    } catch {
-      // The checklist still works in-memory when browser storage is unavailable.
-    }
-    setLoaded(true);
+    const hydrationTimer = window.setTimeout(() => {
+      try {
+        const saved = window.localStorage.getItem(STORAGE_KEY);
+        if (saved) setChecked(JSON.parse(saved));
+      } catch {
+        // The checklist still works in-memory when browser storage is unavailable.
+      }
+      setLoaded(true);
+    }, 0);
+
+    return () => window.clearTimeout(hydrationTimer);
   }, []);
 
   useEffect(() => {

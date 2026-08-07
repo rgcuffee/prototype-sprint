@@ -515,12 +515,12 @@ export default function Home() {
               <fieldset className="start-path-options">
                 <legend>Choose your starting path</legend>
                 <div>
-                  <label>
-                    <input type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked required />
+                  <label htmlFor="start-path-fit" aria-label="Free 15-minute Sprint Fit Call">
+                    <input id="start-path-fit" type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked required />
                     <span><b>RECOMMENDED</b><strong>Free 15-minute Sprint Fit Call</strong><small>Confirm scope, readiness, and whether the sprint is a good fit.</small></span>
                   </label>
-                  <label>
-                    <input type="radio" name="start-path" value="Direct $500 Prototype Sprint request" required />
+                  <label htmlFor="start-path-sprint" aria-label="Direct $500 Prototype Sprint request">
+                    <input id="start-path-sprint" type="radio" name="start-path" value="Direct $500 Prototype Sprint request" required />
                     <span><b>READY TO BUILD</b><strong>Request the $500 Prototype Sprint</strong><small>Use this path when the idea and first-sprint goal are already focused.</small></span>
                   </label>
                 </div>

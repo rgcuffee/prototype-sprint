@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><title>Prototype Sprint form blueprint</title></head>
+  <body>
+    <form name="prototype-sprint-inquiry" action="/thanks/" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="prototype-sprint-inquiry">
+      <input type="hidden" name="subject" value="New Prototype Sprint inquiry">
+      <input name="bot-field">
+      <input name="first-name">
+      <input name="last-name">
+      <input type="email" name="email">
+      <select name="offering"><option>Prototype Sprint — 3 hours / $500</option></select>
+      <textarea name="project-summary"></textarea>
+      <textarea name="sprint-win"></textarea>
+      <input type="checkbox" name="priorities[]" value="Prototype">
+      <input type="checkbox" name="priorities[]" value="Landing page">
+      <input type="checkbox" name="priorities[]" value="Brand starter">
+      <input type="checkbox" name="priorities[]" value="Database or login">
+      <input type="checkbox" name="priorities[]" value="Integration">
+      <input type="checkbox" name="priorities[]" value="Deployment">
+      <input type="checkbox" name="priorities[]" value="Social launch">
+      <textarea name="notes"></textarea>
+      <input type="checkbox" name="readiness-agreement" value="I understand the sprint is time-boxed">
+      <button type="submit">Send sprint request</button>
+    </form>
+  </body>
+</html>

@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -40,15 +40,44 @@ test("server-renders the complete Prototype Sprint landing page", async () => {
   assert.match(html, /<details/);
   assert.match(html, /Is a deployed prototype guaranteed\?/);
   assert.match(html, /A target—not a guaranteed bundle\./);
+  assert.match(html, /Book\. Prepare\. Build\./);
+  assert.match(html, /Work the pre-checklist/);
+  assert.match(html, /name="prototype-sprint-inquiry"/);
+  assert.match(html, /data-netlify="true"/);
+  assert.match(html, /What would make the first sprint a win\?/);
+  assert.match(html, /Potentially \$0 per month at prototype scale/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
+test("publishes interactive offering checklists and a form success page", async () => {
+  const [checklistsResponse, thanksResponse] = await Promise.all([
+    render("/checklists"),
+    render("/thanks"),
+  ]);
+
+  assert.equal(checklistsResponse.status, 200);
+  const checklists = await checklistsResponse.text();
+  assert.match(checklists, /Come ready to <em>build\.<\/em>/);
+  assert.match(checklists, /Prototype Sprint/);
+  assert.match(checklists, /Landing Page Sprint/);
+  assert.match(checklists, /Brand Starter/);
+  assert.match(checklists, /Social Launch Kit/);
+  assert.match(checklists, /Progress saves automatically on this device/);
+
+  assert.equal(thanksResponse.status, 200);
+  const thanks = await thanksResponse.text();
+  assert.match(thanks, /Sprint request received/);
+  assert.match(thanks, /Start the readiness checklist/);
+});
+
 test("removes starter artifacts and keeps product metadata and responsive styles", async () => {
-  const [page, layout, css, packageJson] = await Promise.all([
+  const [page, layout, css, packageJson, netlifyForm, checklistClient] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../public/netlify-form.html", import.meta.url), "utf8"),
+    readFile(new URL("../app/checklists/ChecklistHub.tsx", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /const BOOKING_URL/);
@@ -62,6 +91,11 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(page + layout, /codex-preview|SkeletonPreview|_sites-preview/);
+  assert.match(netlifyForm, /data-netlify="true"/);
+  assert.match(netlifyForm, /name="form-name" value="prototype-sprint-inquiry"/);
+  assert.match(netlifyForm, /name="sprint-win"/);
+  assert.match(checklistClient, /window\.localStorage/);
+  assert.match(checklistClient, /window\.print\(\)/);
 
   await access(new URL("../public/og.png", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));

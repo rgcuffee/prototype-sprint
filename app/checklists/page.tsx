@@ -1,0 +1,41 @@
+import type { Metadata } from "next";
+import { ChecklistHub } from "./ChecklistHub";
+
+export const metadata: Metadata = {
+  title: "Pre-Sprint Checklists — Prototype Sprint",
+  description:
+    "Interactive readiness checklists for prototype, landing page, brand, and social launch sprints.",
+};
+
+export default function ChecklistsPage() {
+  return (
+    <main className="checklist-page">
+      <header className="checklist-header section-shell">
+        <a className="brand" href="/" aria-label="Prototype Sprint home">
+          <span className="brand-badge">PS</span>
+          <span className="brand-copy">
+            <strong>Prototype Sprint</strong>
+            <small>Ideas into real products.</small>
+          </span>
+        </a>
+        <nav aria-label="Checklist page navigation">
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#pricing">Pricing</a>
+          <a className="button button-small" href="/#booking">Book a sprint <span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+      <section className="checklist-hero section-shell">
+        <p className="eyebrow"><span /> Working pre-sprint checklists</p>
+        <h1>Come ready to <em>build.</em></h1>
+        <p>Choose the offering that best matches your sprint. Check off what you already have, save your progress on this device, and bring the remaining questions into the session.</p>
+      </section>
+      <ChecklistHub />
+      <section className="checklist-bottom-cta">
+        <div className="section-shell">
+          <div><p className="section-kicker light">Ready enough is enough</p><h2>You do not need every box checked.</h2></div>
+          <div><p>The checklist helps us spend more of the sprint building. If you are still at idea stage, we will simply use more of the session for focus and setup.</p><a className="button button-light" href="/#booking">Share your sprint goal <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </section>
+    </main>
+  );
+}

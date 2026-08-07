@@ -123,6 +123,11 @@ const faqs = [
       "Yes, when the idea is focused and the content, assets, and accounts are ready. For a more complex product, we may choose to spend the sprint on the application and handle the landing page in a later session.",
   },
   {
+    question: "What could the best-case ongoing software cost?",
+    answer:
+      "Potentially $0 per month at prototype scale. A prepared project can use GitHub Free for the repository, Netlify Free for hosting and form submissions, and Supabase Free for a lightweight backend—provided usage stays within each plan’s limits. If you already own the domain, there may be no new domain purchase either. Paid APIs, email, payment processing, higher traffic, or production requirements can add costs, and provider terms can change.",
+  },
+  {
     question: "Do I need to know how to code?",
     answer:
       "No. You need to understand the problem and be ready to make decisions. The technical implementation happens during the sprint, with the work visible as it takes shape.",
@@ -204,7 +209,7 @@ export default function Home() {
           <a href="#how-it-works">How it works</a>
           <a href="#menu">Sprint menu</a>
           <a href="#pricing">Pricing</a>
-          <a href="#readiness">Come prepared</a>
+          <a href="/checklists">Checklists</a>
           <a href="#faq">FAQ</a>
         </nav>
         <a className="button button-small" href={BOOKING_URL}>Book a sprint <Arrow /></a>
@@ -289,8 +294,19 @@ export default function Home() {
 
         <section className="process-section" id="how-it-works">
           <div className="section-shell">
+            <div className="before-sprint">
+              <div className="before-sprint-heading">
+                <div><p className="section-kicker">Before the clock starts</p><h2>Book. Prepare. Build.</h2></div>
+                <p>A short intake captures the goal for your first sprint. Then a practical checklist protects the session for decisions and building—not account setup and asset hunting.</p>
+              </div>
+              <ol className="booking-journey">
+                <li><span>01</span><div><h3>Book the sprint</h3><p>Tell us what you are building, who it is for, and what would make session one a win.</p></div></li>
+                <li><span>02</span><div><h3>Work the pre-checklist</h3><p>Prepare the accounts, access, content, assets, and decisions your chosen offering needs.</p><a href="/checklists">Open the checklists <Arrow /></a></div></li>
+                <li><span>03</span><div><h3>Join the live session</h3><p>We confirm the priority, start the three-hour clock, and build together toward the best outcome.</p></div></li>
+              </ol>
+            </div>
             <div className="section-heading">
-              <div><p className="section-kicker">How it works</p><h2>Three hours. One focused loop.</h2></div>
+              <div><p className="section-kicker">Inside the session</p><h2>Three hours. One focused loop.</h2></div>
               <p>Preparation changes how far we can get. Once the clock starts, we protect the time and build toward the most valuable next step.</p>
             </div>
             <ol className="process-grid">
@@ -380,6 +396,7 @@ export default function Home() {
               <div><span>✓</span><p><strong>Accounts & access</strong><small>Have relevant hosting, domain, API, and service logins ready.</small></p></div>
               <div><span>✓</span><p><strong>Decision-maker present</strong><small>Someone in the room can make fast, final calls.</small></p></div>
             </div>
+            <a className="button button-secondary readiness-link" href="/checklists">Open the offering checklists <Arrow /></a>
           </div>
           <div className="readiness-levels">
             <article className="readiness-card ready"><span>READY TO SHIP</span><strong>Aim aggressively for a deployed first version.</strong><p>Focused idea · content · accounts · assets · fast decisions</p><i>03</i></article>
@@ -457,16 +474,61 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="final-cta" id="booking">
+        <section className="booking-section" id="booking">
           <div className="final-grid" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
-          <div className="section-shell final-content">
-            <p className="eyebrow light"><span /> 3 hours · $500 · live build</p>
-            <h2>Stop explaining the idea.<br /><em>Start showing it.</em></h2>
-            <p>Bring the problem. We will focus it, build together, and get as far as we responsibly can toward something real.</p>
-            <div className="final-actions">
-              <a className="button button-light" href={CONTACT_URL}>Start a sprint conversation <Arrow /></a>
-              <span>No retainer. No guaranteed bundle. Just focused progress.</span>
+          <div className="section-shell booking-layout">
+            <div className="booking-copy">
+              <p className="eyebrow light"><span /> 3 hours · $500 · live build</p>
+              <h2>Book the first sprint.</h2>
+              <p>Give us the starting point and your definition of a win. We will follow up with the right readiness checklist and next steps for scheduling.</p>
+              <ol>
+                <li><span>01</span>Share the idea and first-sprint goal</li>
+                <li><span>02</span>Complete the offering checklist</li>
+                <li><span>03</span>Meet live and start building</li>
+              </ol>
+              <small>No retainer. No guaranteed bundle. Just focused progress.</small>
             </div>
+            <form
+              className="booking-form"
+              name="prototype-sprint-inquiry"
+              action="/thanks/"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              <input type="hidden" name="form-name" value="prototype-sprint-inquiry" />
+              <input type="hidden" name="subject" value="New Prototype Sprint inquiry" />
+              <p className="honeypot"><label>Do not fill this out: <input name="bot-field" /></label></p>
+              <div className="form-heading"><span>SPRINT INTAKE</span><strong>What should we build first?</strong></div>
+              <div className="form-row">
+                <label>First name<input name="first-name" autoComplete="given-name" required /></label>
+                <label>Last name<input name="last-name" autoComplete="family-name" required /></label>
+              </div>
+              <label>Email<input type="email" name="email" autoComplete="email" required /></label>
+              <label>Which session fits best?
+                <select name="offering" defaultValue="Prototype Sprint — 3 hours / $500" required>
+                  <option>Prototype Sprint — 3 hours / $500</option>
+                  <option>Iteration Session — 2 hours / $300</option>
+                  <option>Iteration Sprint — 3 hours / $450</option>
+                  <option>Brand or launch-focused sprint</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label>What are you trying to build?<textarea name="project-summary" rows={3} required placeholder="The idea, who it is for, and the problem it solves." /></label>
+              <label>What would make the first sprint a win?<textarea name="sprint-win" rows={3} required placeholder="The most valuable thing we could make clearer, working, or shareable." /></label>
+              <fieldset>
+                <legend>Likely priorities <small>Select any that apply.</small></legend>
+                <div className="priority-options">
+                  {['Prototype', 'Landing page', 'Brand starter', 'Database or login', 'Integration', 'Deployment', 'Social launch'].map((priority) => (
+                    <label key={priority}><input type="checkbox" name="priorities[]" value={priority} /><span>{priority}</span></label>
+                  ))}
+                </div>
+              </fieldset>
+              <label>Anything else we should know?<textarea name="notes" rows={2} /></label>
+              <label className="consent-row"><input type="checkbox" name="readiness-agreement" value="I understand the sprint is time-boxed" required /><span>I understand this is a time-boxed working session, not a guaranteed feature bundle.</span></label>
+              <button className="button form-submit" type="submit">Send sprint request <Arrow /></button>
+              <p className="form-note">Your answers are used to assess fit and send the right pre-sprint checklist.</p>
+            </form>
           </div>
         </section>
       </main>
@@ -482,7 +544,7 @@ export default function Home() {
         </div>
         <div className="footer-bottom">
           <p>Prototype Sprint deliverables are not automatically production-ready software.</p>
-          <div><a href="#how-it-works">How it works</a><a href="#pricing">Pricing</a><a href="#readiness">Readiness</a><a href="#faq">FAQ</a></div>
+          <div><a href="#how-it-works">How it works</a><a href="#pricing">Pricing</a><a href="/checklists">Checklists</a><a href="#faq">FAQ</a></div>
           <span>Prototype Sprint · 2026</span>
         </div>
       </footer>

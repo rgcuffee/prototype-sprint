@@ -110,7 +110,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(netlifyForm, /name="sprint-win"/);
   assert.match(netlifyForm, /name="handoff-drive"/);
   assert.match(netlifyForm, /name="start-path"/);
-  assert.match(netlifyForm, /action="\/"/);
+  assert.match(netlifyForm, /action="\/thanks\/"/);
   assert.match(checklistClient, /Shared Drive & handoff/);
   assert.match(checklistClient, /window\.localStorage/);
   assert.match(checklistClient, /window\.print\(\)/);

@@ -503,7 +503,7 @@ export default function Home() {
             <form
               className="booking-form"
               name="prototype-sprint-inquiry"
-              action="/"
+              action="/thanks/"
               method="POST"
               data-netlify="true"
               data-netlify-honeypot="bot-field"

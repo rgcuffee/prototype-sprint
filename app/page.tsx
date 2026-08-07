@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { BookingPathSync } from "./BookingPathSync";
+import { NetlifyFormSubmit } from "./NetlifyFormSubmit";
 
 const FIT_CALL_URL = "/?start=fit#booking";
 const SPRINT_REQUEST_URL = "/?start=sprint#booking";
@@ -502,7 +503,7 @@ export default function Home() {
             <form
               className="booking-form"
               name="prototype-sprint-inquiry"
-              action="/thanks/"
+              action="/"
               method="POST"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
@@ -553,6 +554,7 @@ export default function Home() {
               <label>Anything else we should know?<textarea name="notes" rows={2} /></label>
               <label className="consent-row"><input type="checkbox" name="readiness-agreement" value="I understand the sprint is time-boxed" required /><span>I understand this is a time-boxed working session, not a guaranteed feature bundle.</span></label>
               <button className="button form-submit" type="submit">Send my request <Arrow /></button>
+              <NetlifyFormSubmit />
               <p className="form-note">No payment is taken here. We use your answers to assess fit and send the right next step.</p>
             </form>
           </div>

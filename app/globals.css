@@ -1172,6 +1172,9 @@ h2 em {
 .consent-row input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--orange); }
 .consent-row span { color: #625c54; font-size: 9px; font-weight: 500; }
 .form-submit { width: 100%; margin-top: 4px; }
+.booking-form[aria-busy="true"] .form-submit { cursor: wait; opacity: .72; }
+.form-submit-status { min-height: 18px; margin: -4px 0; color: #776f66; font-size: 10px; text-align: center; }
+.form-submit-status.error { color: #a93e17; font-weight: 700; }
 .form-note { margin: -5px 0 0; color: #8a8177; font-size: 8px; text-align: center; }
 .honeypot { position: absolute; left: -9999px; }
 

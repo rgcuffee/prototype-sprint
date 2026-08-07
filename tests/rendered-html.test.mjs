@@ -81,7 +81,7 @@ test("publishes interactive offering checklists and a form success page", async 
 });
 
 test("removes starter artifacts and keeps product metadata and responsive styles", async () => {
-  const [page, layout, css, packageJson, netlifyForm, checklistClient, nextConfig, netlifyConfig] = await Promise.all([
+  const [page, layout, css, packageJson, netlifyForm, checklistClient, nextConfig, netlifyConfig, formSubmitClient] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
@@ -90,6 +90,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
     readFile(new URL("../app/checklists/ChecklistHub.tsx", import.meta.url), "utf8"),
     readFile(new URL("../next.config.ts", import.meta.url), "utf8"),
     readFile(new URL("../netlify.toml", import.meta.url), "utf8"),
+    readFile(new URL("../app/NetlifyFormSubmit.tsx", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /const FIT_CALL_URL/);
@@ -109,11 +110,17 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(netlifyForm, /name="sprint-win"/);
   assert.match(netlifyForm, /name="handoff-drive"/);
   assert.match(netlifyForm, /name="start-path"/);
+  assert.match(netlifyForm, /action="\/"/);
   assert.match(checklistClient, /Shared Drive & handoff/);
   assert.match(checklistClient, /window\.localStorage/);
   assert.match(checklistClient, /window\.print\(\)/);
   assert.match(nextConfig, /output:\s*"export"/);
   assert.match(netlifyConfig, /publish = "dist\/client"/);
+  assert.match(netlifyConfig, /from = "\/thank"/);
+  assert.match(netlifyConfig, /from = "\/thank\/"/);
+  assert.match(formSubmitClient, /fetch\("\/"/);
+  assert.match(formSubmitClient, /application\/x-www-form-urlencoded/);
+  assert.match(formSubmitClient, /window\.location\.assign\("\/thanks\/"\)/);
 
   await access(new URL("../public/og.png", import.meta.url));
   await access(new URL("../dist/client/index.html", import.meta.url));

@@ -23,7 +23,7 @@ async function render(path = "/") {
   );
 }
 
-test("server-renders the complete Prototype Sprint landing page", async () => {
+test("server-renders the complete Proto Sprint landing page", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -35,7 +35,7 @@ test("server-renders the complete Prototype Sprint landing page", async () => {
   assert.match(html, /Request a \$500 Sprint/);
   assert.match(html, /Working prototype/);
   assert.match(html, /Choose what matters most\./);
-  assert.match(html, /Prototype Sprint<\/h3><span>3 hours<\/span>/);
+  assert.match(html, /Proto Sprint<\/h3><span>3 hours<\/span>/);
   assert.match(html, /Want to leave with something live\?/);
   assert.match(html, /You own what we build\./);
   assert.match(html, /<details/);
@@ -52,7 +52,7 @@ test("server-renders the complete Prototype Sprint landing page", async () => {
   assert.match(html, /Documentation &amp; handoff/);
   assert.match(html, /name="start-path"/);
   assert.match(html, /Free 15-minute Sprint Fit Call/);
-  assert.match(html, /Direct \$500 Prototype Sprint request/);
+  assert.match(html, /Direct \$500 Proto Sprint request/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
@@ -65,7 +65,7 @@ test("publishes interactive offering checklists and a form success page", async 
   assert.equal(checklistsResponse.status, 200);
   const checklists = await checklistsResponse.text();
   assert.match(checklists, /Come ready to <em>build\.<\/em>/);
-  assert.match(checklists, /Prototype Sprint/);
+  assert.match(checklists, /Proto Sprint/);
   assert.match(checklists, /Landing Page Sprint/);
   assert.match(checklists, /Brand Starter/);
   assert.match(checklists, /Social Launch Kit/);
@@ -97,7 +97,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(page, /const SPRINT_REQUEST_URL/);
   assert.match(page, /<main id="top">/);
   assert.match(page, /<summary>/);
-  assert.match(layout, /Prototype Sprint — From idea to something real/);
+  assert.match(layout, /Proto Sprint — From idea to something real/);
   assert.match(layout, /\/og\.png/);
   assert.match(layout, /process\.env\.URL/);
   assert.match(css, /--orange:\s*#cf5423/);

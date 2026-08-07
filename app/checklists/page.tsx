@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ChecklistHub } from "./ChecklistHub";
 
 export const metadata: Metadata = {
-  title: "Pre-Sprint Checklists — Prototype Sprint",
+  title: "Pre-Sprint Checklists — Proto Sprint",
   description:
     "Interactive readiness checklists for prototype, landing page, brand, and social launch sprints.",
 };
@@ -12,10 +12,10 @@ export default function ChecklistsPage() {
   return (
     <main className="checklist-page">
       <header className="checklist-header section-shell">
-        <Link className="brand" href="/" aria-label="Prototype Sprint home">
+        <Link className="brand" href="/" aria-label="Proto Sprint home">
           <span className="brand-badge">PS</span>
           <span className="brand-copy">
-            <strong>Prototype Sprint</strong>
+            <strong>Proto Sprint</strong>
             <small>Ideas into real products.</small>
           </span>
         </Link>

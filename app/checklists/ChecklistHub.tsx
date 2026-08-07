@@ -20,7 +20,7 @@ const offerings: Offering[] = [
   {
     id: "prototype",
     eyebrow: "PRODUCT & PROTOTYPE",
-    title: "Prototype Sprint",
+    title: "Proto Sprint",
     summary: "Best for an MVP, proof of concept, core user flow, internal tool, or demo-ready product experience.",
     sections: [
       {

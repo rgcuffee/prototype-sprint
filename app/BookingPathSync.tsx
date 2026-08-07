@@ -9,7 +9,7 @@ export function BookingPathSync() {
 
   useEffect(() => {
     const value = requestedStart === "sprint"
-      ? "Direct $500 Prototype Sprint request"
+      ? "Direct $500 Proto Sprint request"
       : "Free 15-minute Sprint Fit Call";
     const input = document.querySelector<HTMLInputElement>(
       `input[name="start-path"][value="${value}"]`,

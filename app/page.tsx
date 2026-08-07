@@ -78,7 +78,7 @@ const menuGroups = [
 
 const prices = [
   {
-    name: "Prototype Sprint",
+    name: "Proto Sprint",
     time: "3 hours",
     price: "$500",
     note: "For new ideas",
@@ -135,7 +135,7 @@ const faqs = [
   {
     question: "Do I need to take the free fit call first?",
     answer:
-      "No. The free 15-minute Sprint Fit Call is the recommended starting point when you want to confirm scope, readiness, or whether a sprint is the right format. If your idea is already focused and you are ready to move, you can request the $500 Prototype Sprint directly. Either path starts with a short intake so the conversation is useful.",
+      "No. The free 15-minute Sprint Fit Call is the recommended starting point when you want to confirm scope, readiness, or whether a sprint is the right format. If your idea is already focused and you are ready to move, you can request the $500 Proto Sprint directly. Either path starts with a short intake so the conversation is useful.",
   },
   {
     question: "Do I need to know how to code?",
@@ -150,7 +150,7 @@ const faqs = [
   {
     question: "Is this production-ready software?",
     answer:
-      "Not automatically. Prototype Sprints are designed for validation, demos, early users, and product learning. Security, privacy, performance, accessibility, monitoring, and other production requirements should be evaluated and scoped separately.",
+      "Not automatically. Proto Sprints are designed for validation, demos, early users, and product learning. Security, privacy, performance, accessibility, monitoring, and other production requirements should be evaluated and scoped separately.",
   },
 ];
 
@@ -208,10 +208,10 @@ export default function Home() {
   return (
     <>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Prototype Sprint home">
+        <a className="brand" href="#top" aria-label="Proto Sprint home">
           <span className="brand-badge">PS</span>
           <span className="brand-copy">
-            <strong>Prototype Sprint</strong>
+            <strong>Proto Sprint</strong>
             <small>Ideas into real products.</small>
           </span>
         </a>
@@ -287,7 +287,7 @@ export default function Home() {
         </section>
 
         <section className="intro-section section-shell">
-          <div className="section-kicker">What is a Prototype Sprint?</div>
+          <div className="section-kicker">What is a Proto Sprint?</div>
           <div className="intro-grid">
             <h2>A working session with the work happening <em>in the room.</em></h2>
             <div>
@@ -509,7 +509,7 @@ export default function Home() {
               data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="prototype-sprint-inquiry" />
-              <input type="hidden" name="subject" value="New Prototype Sprint inquiry" />
+              <input type="hidden" name="subject" value="New Proto Sprint inquiry" />
               <p className="honeypot"><label>Do not fill this out: <input name="bot-field" /></label></p>
               <div className="form-heading"><span>START HERE</span><strong>Free fit call or direct sprint?</strong></div>
               <fieldset className="start-path-options">
@@ -519,9 +519,9 @@ export default function Home() {
                     <input id="start-path-fit" type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked required />
                     <span><b>RECOMMENDED</b><strong>Free 15-minute Sprint Fit Call</strong><small>Confirm scope, readiness, and whether the sprint is a good fit.</small></span>
                   </label>
-                  <label htmlFor="start-path-sprint" aria-label="Direct $500 Prototype Sprint request">
-                    <input id="start-path-sprint" type="radio" name="start-path" value="Direct $500 Prototype Sprint request" required />
-                    <span><b>READY TO BUILD</b><strong>Request the $500 Prototype Sprint</strong><small>Use this path when the idea and first-sprint goal are already focused.</small></span>
+                  <label htmlFor="start-path-sprint" aria-label="Direct $500 Proto Sprint request">
+                    <input id="start-path-sprint" type="radio" name="start-path" value="Direct $500 Proto Sprint request" required />
+                    <span><b>READY TO BUILD</b><strong>Request the $500 Proto Sprint</strong><small>Use this path when the idea and first-sprint goal are already focused.</small></span>
                   </label>
                 </div>
               </fieldset>
@@ -532,8 +532,8 @@ export default function Home() {
               </div>
               <label>Email<input type="email" name="email" autoComplete="email" required /></label>
               <label>Which session fits best?
-                <select name="offering" defaultValue="Prototype Sprint — 3 hours / $500" required>
-                  <option>Prototype Sprint — 3 hours / $500</option>
+                <select name="offering" defaultValue="Proto Sprint — 3 hours / $500" required>
+                  <option>Proto Sprint — 3 hours / $500</option>
                   <option>Iteration Session — 2 hours / $300</option>
                   <option>Iteration Sprint — 3 hours / $450</option>
                   <option>Brand or launch-focused sprint</option>
@@ -565,15 +565,15 @@ export default function Home() {
         <div className="footer-top">
           <a className="brand footer-brand" href="#top">
             <span className="brand-badge">PS</span>
-            <span className="brand-copy"><strong>Prototype Sprint</strong><small>Ideas into real products.</small></span>
+            <span className="brand-copy"><strong>Proto Sprint</strong><small>Ideas into real products.</small></span>
           </a>
           <p>Modern tools. Founder-owned. Built for speed.</p>
           <div className="tool-list" aria-label="Common prototype tools"><span>Netlify</span><span>Supabase</span><span>GitHub</span><span>Google Drive</span><span>Stripe</span></div>
         </div>
         <div className="footer-bottom">
-          <p>Prototype Sprint deliverables are not automatically production-ready software.</p>
+          <p>Proto Sprint deliverables are not automatically production-ready software.</p>
           <div><a href="#how-it-works">How it works</a><a href="#pricing">Pricing</a><a href="/checklists">Checklists</a><a href="#faq">FAQ</a></div>
-          <span>Prototype Sprint · 2026</span>
+          <span>Proto Sprint · 2026</span>
         </div>
       </footer>
     </>

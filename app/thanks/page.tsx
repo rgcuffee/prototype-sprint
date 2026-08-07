@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Sprint request received — Prototype Sprint",
-  description: "Your Prototype Sprint request has been received.",
+  title: "Sprint request received — Proto Sprint",
+  description: "Your Proto Sprint request has been received.",
 };
 
 export default function ThanksPage() {
   return (
     <main className="thanks-page">
       <div className="thanks-card">
-        <Link className="brand" href="/" aria-label="Prototype Sprint home">
+        <Link className="brand" href="/" aria-label="Proto Sprint home">
           <span className="brand-badge">PS</span>
-          <span className="brand-copy"><strong>Prototype Sprint</strong><small>Ideas into real products.</small></span>
+          <span className="brand-copy"><strong>Proto Sprint</strong><small>Ideas into real products.</small></span>
         </Link>
         <span className="thanks-number">01</span>
         <p className="section-kicker">Sprint request received</p>

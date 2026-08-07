@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Geist } from "next/font/google";
 import "./globals.css";
 
@@ -8,16 +7,11 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ??
-    requestHeaders.get("host") ??
-    "localhost:3000";
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ??
-    (host.startsWith("localhost") ? "http" : "https");
-  const origin = `${protocol}://${host}`;
+export function generateMetadata(): Metadata {
+  const origin =
+    process.env.URL ??
+    process.env.DEPLOY_PRIME_URL ??
+    "https://prototype-sprint.rgcuffee.chatgpt.site";
   const socialImage = `${origin}/og.png`;
 
   return {

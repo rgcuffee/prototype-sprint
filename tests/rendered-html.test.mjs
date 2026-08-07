@@ -81,21 +81,24 @@ test("publishes interactive offering checklists and a form success page", async 
 });
 
 test("removes starter artifacts and keeps product metadata and responsive styles", async () => {
-  const [page, layout, css, packageJson, netlifyForm, checklistClient] = await Promise.all([
+  const [page, layout, css, packageJson, netlifyForm, checklistClient, nextConfig, netlifyConfig] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
     readFile(new URL("../public/netlify-form.html", import.meta.url), "utf8"),
     readFile(new URL("../app/checklists/ChecklistHub.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../next.config.ts", import.meta.url), "utf8"),
+    readFile(new URL("../netlify.toml", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /const BOOKING_URL/);
+  assert.match(page, /const FIT_CALL_URL/);
+  assert.match(page, /const SPRINT_REQUEST_URL/);
   assert.match(page, /<main id="top">/);
   assert.match(page, /<summary>/);
   assert.match(layout, /Prototype Sprint — From idea to something real/);
   assert.match(layout, /\/og\.png/);
-  assert.match(layout, /x-forwarded-host/);
+  assert.match(layout, /process\.env\.URL/);
   assert.match(css, /--orange:\s*#cf5423/);
   assert.match(css, /@media \(max-width: 590px\)/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
@@ -109,7 +112,13 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(checklistClient, /Shared Drive & handoff/);
   assert.match(checklistClient, /window\.localStorage/);
   assert.match(checklistClient, /window\.print\(\)/);
+  assert.match(nextConfig, /output:\s*"export"/);
+  assert.match(netlifyConfig, /publish = "dist\/client"/);
 
   await access(new URL("../public/og.png", import.meta.url));
+  await access(new URL("../dist/client/index.html", import.meta.url));
+  await access(new URL("../dist/client/checklists.html", import.meta.url));
+  await access(new URL("../dist/client/thanks.html", import.meta.url));
+  await access(new URL("../dist/client/netlify-form.html", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
 });

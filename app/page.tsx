@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+import { BookingPathSync } from "./BookingPathSync";
+
 const FIT_CALL_URL = "/?start=fit#booking";
 const SPRINT_REQUEST_URL = "/?start=sprint#booking";
 const CONTACT_URL =
@@ -200,15 +203,7 @@ function ProductPreview({ type }: { type: string }) {
   );
 }
 
-type HomeProps = {
-  searchParams?: Promise<{ start?: string | string[] }>;
-};
-
-export default async function Home({ searchParams }: HomeProps) {
-  const params = searchParams ? await searchParams : {};
-  const requestedStart = Array.isArray(params.start) ? params.start[0] : params.start;
-  const startsWithSprintRequest = requestedStart === "sprint";
-
+export default function Home() {
   return (
     <>
       <header className="site-header">
@@ -520,15 +515,16 @@ export default async function Home({ searchParams }: HomeProps) {
                 <legend>Choose your starting path</legend>
                 <div>
                   <label>
-                    <input type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked={!startsWithSprintRequest} required />
+                    <input type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked required />
                     <span><b>RECOMMENDED</b><strong>Free 15-minute Sprint Fit Call</strong><small>Confirm scope, readiness, and whether the sprint is a good fit.</small></span>
                   </label>
                   <label>
-                    <input type="radio" name="start-path" value="Direct $500 Prototype Sprint request" defaultChecked={startsWithSprintRequest} required />
+                    <input type="radio" name="start-path" value="Direct $500 Prototype Sprint request" required />
                     <span><b>READY TO BUILD</b><strong>Request the $500 Prototype Sprint</strong><small>Use this path when the idea and first-sprint goal are already focused.</small></span>
                   </label>
                 </div>
               </fieldset>
+              <Suspense fallback={null}><BookingPathSync /></Suspense>
               <div className="form-row">
                 <label>First name<input name="first-name" autoComplete="given-name" required /></label>
                 <label>Last name<input name="last-name" autoComplete="family-name" required /></label>

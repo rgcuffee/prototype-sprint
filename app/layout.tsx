@@ -12,7 +12,7 @@ export function generateMetadata(): Metadata {
     process.env.URL ??
     process.env.DEPLOY_PRIME_URL ??
     "https://prototype-sprint.rgcuffee.chatgpt.site";
-  const socialImage = `${origin}/og.png`;
+  const socialImage = `${origin}/og-v2.png`;
 
   return {
     metadataBase: new URL(origin),

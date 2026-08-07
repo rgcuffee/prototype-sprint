@@ -98,7 +98,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(page, /<main id="top">/);
   assert.match(page, /<summary>/);
   assert.match(layout, /Proto Sprint — From idea to something real/);
-  assert.match(layout, /\/og\.png/);
+  assert.match(layout, /\/og-v2\.png/);
   assert.match(layout, /process\.env\.URL/);
   assert.match(css, /--orange:\s*#cf5423/);
   assert.match(css, /@media \(max-width: 590px\)/);
@@ -122,7 +122,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(formSubmitClient, /application\/x-www-form-urlencoded/);
   assert.match(formSubmitClient, /window\.location\.assign\("\/thanks\/"\)/);
 
-  await access(new URL("../public/og.png", import.meta.url));
+  await access(new URL("../public/og-v2.png", import.meta.url));
   await access(new URL("../dist/client/index.html", import.meta.url));
   await access(new URL("../dist/client/checklists.html", import.meta.url));
   await access(new URL("../dist/client/thanks.html", import.meta.url));

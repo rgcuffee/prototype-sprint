@@ -190,6 +190,19 @@ const offerings: Offering[] = [
   },
 ];
 
+const handoffSection: ChecklistSection = {
+  title: "Shared Drive & handoff",
+  note: "Use one client-owned Google Drive folder as the home for sprint inputs and final delivery.",
+  items: [
+    "Client-owned Google Drive folder created",
+    "Builder access granted before the session",
+    "References, briefs, and existing documentation uploaded",
+    "Content, images, and other source materials organized",
+    "Folders created for Working Files and Final Handoff",
+    "A handoff notes document created for links, decisions, and next steps",
+  ],
+};
+
 const STORAGE_KEY = "prototype-sprint-readiness-v1";
 
 function itemId(offeringId: string, sectionIndex: number, itemIndex: number) {
@@ -221,9 +234,10 @@ export function ChecklistHub() {
   }, [checked, loaded]);
 
   const active = offerings.find((offering) => offering.id === activeId) ?? offerings[0];
+  const activeSections = useMemo(() => [...active.sections, handoffSection], [active]);
   const allItemIds = useMemo(
-    () => active.sections.flatMap((section, sectionIndex) => section.items.map((_, itemIndex) => itemId(active.id, sectionIndex, itemIndex))),
-    [active],
+    () => activeSections.flatMap((section, sectionIndex) => section.items.map((_, itemIndex) => itemId(active.id, sectionIndex, itemIndex))),
+    [active.id, activeSections],
   );
   const activeChecked = checked[active.id] ?? [];
   const percentage = allItemIds.length ? Math.round((activeChecked.length / allItemIds.length) * 100) : 0;
@@ -277,7 +291,7 @@ export function ChecklistHub() {
         </aside>
 
         <div className="checklist-sections">
-          {active.sections.map((section, sectionIndex) => (
+          {activeSections.map((section, sectionIndex) => (
             <article key={section.title}>
               <header><span>0{sectionIndex + 1}</span><div><h3>{section.title}</h3><p>{section.note}</p></div></header>
               <div className="check-items">

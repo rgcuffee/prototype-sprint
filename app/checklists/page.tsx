@@ -33,7 +33,7 @@ export default function ChecklistsPage() {
       <section className="checklist-bottom-cta">
         <div className="section-shell">
           <div><p className="section-kicker light">Ready enough is enough</p><h2>You do not need every box checked.</h2></div>
-          <div><p>The checklist helps us spend more of the sprint building. If you are still at idea stage, we will simply use more of the session for focus and setup.</p><a className="button button-light" href="/#booking">Share your sprint goal <span aria-hidden="true">↗</span></a></div>
+          <div><p>The checklist helps us spend more of the sprint building. A client-owned Google Drive folder becomes the shared home for inputs, documentation, exports, and final handoff. If you are still at idea stage, we will simply use more of the session for focus and setup.</p><a className="button button-light" href="/#booking">Share your sprint goal <span aria-hidden="true">↗</span></a></div>
         </div>
       </section>
     </main>

@@ -135,7 +135,7 @@ const faqs = [
   {
     question: "Do I own the code?",
     answer:
-      "That is the intent. Whenever practical, the repository, hosting, database, domain, and third-party accounts are yours from the beginning. Third-party tools and licensed materials remain subject to their own terms.",
+      "That is the intent. Whenever practical, the repository, hosting, database, domain, Google Drive handoff folder, and third-party accounts are yours from the beginning. The Drive folder becomes the shared home for documentation, working materials, final exports, and handoff notes. Third-party tools and licensed materials remain subject to their own terms.",
   },
   {
     question: "Is this production-ready software?",
@@ -301,7 +301,7 @@ export default function Home() {
               </div>
               <ol className="booking-journey">
                 <li><span>01</span><div><h3>Book the sprint</h3><p>Tell us what you are building, who it is for, and what would make session one a win.</p></div></li>
-                <li><span>02</span><div><h3>Work the pre-checklist</h3><p>Prepare the accounts, access, content, assets, and decisions your chosen offering needs.</p><a href="/checklists">Open the checklists <Arrow /></a></div></li>
+                <li><span>02</span><div><h3>Work the pre-checklist</h3><p>Prepare the accounts, access, content, assets, and decisions your chosen offering needs—including a client-owned Google Drive folder for shared materials and handoff.</p><a href="/checklists">Open the checklists <Arrow /></a></div></li>
                 <li><span>03</span><div><h3>Join the live session</h3><p>We confirm the priority, start the three-hour clock, and build together toward the best outcome.</p></div></li>
               </ol>
             </div>
@@ -313,7 +313,7 @@ export default function Home() {
               <li><span>01</span><div className="process-line" /><h3>Focus</h3><p>Define the user, the problem, the smallest useful version, and what would make this session a win.</p><small>00:00—00:30</small></li>
               <li><span>02</span><div className="process-line" /><h3>Build live</h3><p>Design and implement immediately. You react, answer questions, and make decisions in real time.</p><small>00:30—02:15</small></li>
               <li><span>03</span><div className="process-line" /><h3>Refine</h3><p>Test the primary workflow, fix the obvious issues, and sharpen the surfaces that matter most.</p><small>02:15—02:45</small></li>
-              <li><span>04</span><h3>Ship & hand off</h3><p>Deploy when practical, label what is real or mocked, and leave with the work plus a clear next step.</p><small>02:45—03:00</small></li>
+              <li><span>04</span><h3>Ship & hand off</h3><p>Deploy when practical, label what is real or mocked, and organize documentation, final materials, and next steps in your shared Drive folder.</p><small>02:45—03:00</small></li>
             </ol>
           </div>
         </section>
@@ -376,6 +376,7 @@ export default function Home() {
                   <li><i>✓</i> Live, collaborative building</li>
                   <li><i>✓</i> Honest scope decisions</li>
                   <li><i>✓</i> Source code and created assets</li>
+                  <li><i>✓</i> Client-owned Google Drive handoff space</li>
                   <li><i>✓</i> Clear functional vs. mocked handoff</li>
                   <li><i>✓</i> A recommended next step</li>
                 </ul>
@@ -394,6 +395,7 @@ export default function Home() {
               <div><span>✓</span><p><strong>Focused outcome</strong><small>Know the user, problem, and most valuable first version.</small></p></div>
               <div><span>✓</span><p><strong>Content & assets</strong><small>Bring copy, logos, sample data, and useful references.</small></p></div>
               <div><span>✓</span><p><strong>Accounts & access</strong><small>Have relevant hosting, domain, API, and service logins ready.</small></p></div>
+              <div><span>✓</span><p><strong>Shared handoff folder</strong><small>Create a client-owned Google Drive folder for references, working files, documentation, and final materials.</small></p></div>
               <div><span>✓</span><p><strong>Decision-maker present</strong><small>Someone in the room can make fast, final calls.</small></p></div>
             </div>
             <a className="button button-secondary readiness-link" href="/checklists">Open the offering checklists <Arrow /></a>
@@ -410,7 +412,7 @@ export default function Home() {
             <div>
               <p className="section-kicker light">Founder-owned by default</p>
               <h2>You own what we build.</h2>
-              <p>No hostage-code handoff. Whenever practical, we build in accounts you own from the beginning—so when the sprint ends, the work is already yours.</p>
+              <p>No hostage-code handoff. Whenever practical, we build in accounts you own from the beginning. Your shared Google Drive folder keeps briefs, source material, decisions, documentation, exports, and handoff notes in one place you control.</p>
               <a className="text-link" href="#faq">Read the ownership FAQ <Arrow /></a>
             </div>
             <div className="ownership-map" aria-label="Client-owned tools and accounts">
@@ -418,7 +420,7 @@ export default function Home() {
               <div className="ownership-item item-one"><span>GH</span><p>Repository<small>Your GitHub</small></p></div>
               <div className="ownership-item item-two"><span>DB</span><p>Data<small>Your backend</small></p></div>
               <div className="ownership-item item-three"><span>↗</span><p>Hosting<small>Your account</small></p></div>
-              <div className="ownership-item item-four"><span>$</span><p>Payments<small>Your Stripe</small></p></div>
+              <div className="ownership-item item-four"><span>GD</span><p>Handoff<small>Your Google Drive</small></p></div>
             </div>
           </div>
         </section>
@@ -519,11 +521,12 @@ export default function Home() {
               <fieldset>
                 <legend>Likely priorities <small>Select any that apply.</small></legend>
                 <div className="priority-options">
-                  {['Prototype', 'Landing page', 'Brand starter', 'Database or login', 'Integration', 'Deployment', 'Social launch'].map((priority) => (
+                  {['Prototype', 'Landing page', 'Brand starter', 'Database or login', 'Integration', 'Deployment', 'Social launch', 'Documentation & handoff'].map((priority) => (
                     <label key={priority}><input type="checkbox" name="priorities[]" value={priority} /><span>{priority}</span></label>
                   ))}
                 </div>
               </fieldset>
+              <label>Shared Google Drive folder <small className="field-help">Optional now; we will ask for a client-owned folder before the session.</small><input type="url" name="handoff-drive" inputMode="url" placeholder="https://drive.google.com/…" /></label>
               <label>Anything else we should know?<textarea name="notes" rows={2} /></label>
               <label className="consent-row"><input type="checkbox" name="readiness-agreement" value="I understand the sprint is time-boxed" required /><span>I understand this is a time-boxed working session, not a guaranteed feature bundle.</span></label>
               <button className="button form-submit" type="submit">Send sprint request <Arrow /></button>
@@ -540,7 +543,7 @@ export default function Home() {
             <span className="brand-copy"><strong>Prototype Sprint</strong><small>Ideas into real products.</small></span>
           </a>
           <p>Modern tools. Founder-owned. Built for speed.</p>
-          <div className="tool-list" aria-label="Common prototype tools"><span>Netlify</span><span>Supabase</span><span>GitHub</span><span>Google Cloud</span><span>Stripe</span></div>
+          <div className="tool-list" aria-label="Common prototype tools"><span>Netlify</span><span>Supabase</span><span>GitHub</span><span>Google Drive</span><span>Stripe</span></div>
         </div>
         <div className="footer-bottom">
           <p>Prototype Sprint deliverables are not automatically production-ready software.</p>

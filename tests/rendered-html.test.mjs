@@ -46,6 +46,9 @@ test("server-renders the complete Prototype Sprint landing page", async () => {
   assert.match(html, /data-netlify="true"/);
   assert.match(html, /What would make the first sprint a win\?/);
   assert.match(html, /Potentially \$0 per month at prototype scale/);
+  assert.match(html, /client-owned Google Drive folder/);
+  assert.match(html, /name="handoff-drive"/);
+  assert.match(html, /Documentation &amp; handoff/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
@@ -63,6 +66,8 @@ test("publishes interactive offering checklists and a form success page", async 
   assert.match(checklists, /Brand Starter/);
   assert.match(checklists, /Social Launch Kit/);
   assert.match(checklists, /Progress saves automatically on this device/);
+  assert.match(checklists, /Shared Drive &amp; handoff/);
+  assert.match(checklists, /Client-owned Google Drive folder created/);
 
   assert.equal(thanksResponse.status, 200);
   const thanks = await thanksResponse.text();
@@ -94,6 +99,8 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(netlifyForm, /data-netlify="true"/);
   assert.match(netlifyForm, /name="form-name" value="prototype-sprint-inquiry"/);
   assert.match(netlifyForm, /name="sprint-win"/);
+  assert.match(netlifyForm, /name="handoff-drive"/);
+  assert.match(checklistClient, /Shared Drive & handoff/);
   assert.match(checklistClient, /window\.localStorage/);
   assert.match(checklistClient, /window\.print\(\)/);
 

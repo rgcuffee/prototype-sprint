@@ -510,7 +510,7 @@ export default function Home() {
             >
               <input type="hidden" name="form-name" value="prototype-sprint-inquiry" />
               <input type="hidden" name="subject" value="New Proto Sprint inquiry" />
-              <p className="honeypot"><label>Do not fill this out: <input name="bot-field" /></label></p>
+              <p className="honeypot"><label>Do not fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
               <div className="form-heading"><span>START HERE</span><strong>Free fit call or direct sprint?</strong></div>
               <fieldset className="start-path-options">
                 <legend>Choose your starting path</legend>
@@ -550,7 +550,6 @@ export default function Home() {
                   ))}
                 </div>
               </fieldset>
-              <label>Shared Google Drive folder <small className="field-help">Optional now; we will ask for a client-owned folder before the session.</small><input type="url" name="handoff-drive" inputMode="url" placeholder="https://drive.google.com/…" /></label>
               <label>Anything else we should know?<textarea name="notes" rows={2} /></label>
               <label className="consent-row"><input type="checkbox" name="readiness-agreement" value="I understand the sprint is time-boxed" required /><span>I understand this is a time-boxed working session, not a guaranteed feature bundle.</span></label>
               <button className="button form-submit" type="submit">Send my request <Arrow /></button>

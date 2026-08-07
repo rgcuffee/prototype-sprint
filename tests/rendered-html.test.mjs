@@ -48,7 +48,7 @@ test("server-renders the complete Proto Sprint landing page", async () => {
   assert.match(html, /What would make the first sprint a win\?/);
   assert.match(html, /Potentially \$0 per month at prototype scale/);
   assert.match(html, /client-owned Google Drive folder/);
-  assert.match(html, /name="handoff-drive"/);
+  assert.doesNotMatch(html, /name="handoff-drive"/);
   assert.match(html, /Documentation &amp; handoff/);
   assert.match(html, /name="start-path"/);
   assert.match(html, /Free 15-minute Sprint Fit Call/);
@@ -108,7 +108,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(netlifyForm, /data-netlify="true"/);
   assert.match(netlifyForm, /name="form-name" value="prototype-sprint-inquiry"/);
   assert.match(netlifyForm, /name="sprint-win"/);
-  assert.match(netlifyForm, /name="handoff-drive"/);
+  assert.doesNotMatch(netlifyForm, /name="handoff-drive"/);
   assert.match(netlifyForm, /name="start-path"/);
   assert.match(netlifyForm, /action="\/thanks\/"/);
   assert.match(checklistClient, /Shared Drive & handoff/);

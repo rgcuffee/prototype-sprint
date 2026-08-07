@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type ChecklistSection = {
   title: string;
@@ -213,6 +213,7 @@ export function ChecklistHub() {
   const [activeId, setActiveId] = useState(offerings[0].id);
   const [checked, setChecked] = useState<Record<string, string[]>>({});
   const [loaded, setLoaded] = useState(false);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   useEffect(() => {
     try {
@@ -256,6 +257,25 @@ export function ChecklistHub() {
     setChecked((current) => ({ ...current, [active.id]: [] }));
   }
 
+  function selectTab(index: number) {
+    const nextIndex = (index + offerings.length) % offerings.length;
+    setActiveId(offerings[nextIndex].id);
+    tabRefs.current[nextIndex]?.focus();
+  }
+
+  function handleTabKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+    let nextIndex: number | null = null;
+
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = index + 1;
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = index - 1;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = offerings.length - 1;
+
+    if (nextIndex === null) return;
+    event.preventDefault();
+    selectTab(nextIndex);
+  }
+
   return (
     <section className="checklist-hub section-shell" aria-labelledby="checklist-title">
       <div className="offering-tabs" role="tablist" aria-label="Choose a sprint checklist">
@@ -263,17 +283,27 @@ export function ChecklistHub() {
           <button
             type="button"
             role="tab"
+            id={`checklist-tab-${offering.id}`}
             aria-selected={offering.id === active.id}
-            aria-controls="active-checklist"
+            aria-controls="checklist-panel"
+            tabIndex={offering.id === active.id ? 0 : -1}
             key={offering.id}
+            ref={(element) => { tabRefs.current[index] = element; }}
             onClick={() => setActiveId(offering.id)}
+            onKeyDown={(event) => handleTabKeyDown(event, index)}
           >
             <span>0{index + 1}</span>{offering.title}
           </button>
         ))}
       </div>
 
-      <div className="checklist-workspace" id="active-checklist" role="tabpanel">
+      <div
+        className="checklist-workspace"
+        id="checklist-panel"
+        role="tabpanel"
+        aria-labelledby={`checklist-tab-${active.id}`}
+        tabIndex={0}
+      >
         <aside className="checklist-summary">
           <p>{active.eyebrow}</p>
           <h2 id="checklist-title">{active.title}</h2>

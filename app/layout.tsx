@@ -25,6 +25,13 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Prototype Sprint — From idea to something real",
     description:
       "A focused three-hour working session to clarify, build, and move your product idea toward something you can use, test, share, or demonstrate.",
+    alternates: {
+      canonical: `${origin}/`,
+    },
+    icons: {
+      icon: "/favicon.png",
+      apple: "/favicon.png",
+    },
     openGraph: {
       title: "Prototype Sprint — From idea to something real",
       description: "3 hours. $500. Build together live.",

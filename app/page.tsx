@@ -1,4 +1,5 @@
-const BOOKING_URL = "#booking";
+const FIT_CALL_URL = "/?start=fit#booking";
+const SPRINT_REQUEST_URL = "/?start=sprint#booking";
 const CONTACT_URL =
   "mailto:hello@prototypesprint.studio?subject=Prototype%20Sprint%20inquiry";
 
@@ -199,7 +200,15 @@ function ProductPreview({ type }: { type: string }) {
   );
 }
 
-export default function Home() {
+type HomeProps = {
+  searchParams?: Promise<{ start?: string | string[] }>;
+};
+
+export default async function Home({ searchParams }: HomeProps) {
+  const params = searchParams ? await searchParams : {};
+  const requestedStart = Array.isArray(params.start) ? params.start[0] : params.start;
+  const startsWithSprintRequest = requestedStart === "sprint";
+
   return (
     <>
       <header className="site-header">
@@ -217,7 +226,7 @@ export default function Home() {
           <a href="/checklists">Checklists</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a className="button button-small" href={BOOKING_URL}>Free fit call <Arrow /></a>
+        <a className="button button-small" href={FIT_CALL_URL}>Free fit call <Arrow /></a>
       </header>
 
       <main id="top">
@@ -230,8 +239,8 @@ export default function Home() {
               talking about an idea and start using it.
             </p>
             <div className="hero-actions">
-              <a className="button" href={BOOKING_URL}>Book a Free Fit Call <span>15 min</span></a>
-              <a className="button button-secondary" href={BOOKING_URL}>Request a $500 Sprint <Arrow /></a>
+              <a className="button" href={FIT_CALL_URL}>Book a Free Fit Call <span>15 min</span></a>
+              <a className="button button-secondary" href={SPRINT_REQUEST_URL}>Request a $500 Sprint <Arrow /></a>
             </div>
             <p className="micro-proof">
               Start with the free fit call, or request the sprint directly if your goal is already focused. Come prepared and we can aim for a deployed prototype, landing page, or both.
@@ -371,7 +380,7 @@ export default function Home() {
                     <strong className="price">{price.price}</strong>
                     <p>{price.description}</p>
                     <small>{price.note}</small>
-                    {price.featured && <a href={BOOKING_URL}>Request this sprint <Arrow /></a>}
+                    {price.featured && <a href={SPRINT_REQUEST_URL}>Request this sprint <Arrow /></a>}
                   </article>
                 ))}
               </div>
@@ -511,11 +520,11 @@ export default function Home() {
                 <legend>Choose your starting path</legend>
                 <div>
                   <label>
-                    <input type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked required />
+                    <input type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked={!startsWithSprintRequest} required />
                     <span><b>RECOMMENDED</b><strong>Free 15-minute Sprint Fit Call</strong><small>Confirm scope, readiness, and whether the sprint is a good fit.</small></span>
                   </label>
                   <label>
-                    <input type="radio" name="start-path" value="Direct $500 Prototype Sprint request" required />
+                    <input type="radio" name="start-path" value="Direct $500 Prototype Sprint request" defaultChecked={startsWithSprintRequest} required />
                     <span><b>READY TO BUILD</b><strong>Request the $500 Prototype Sprint</strong><small>Use this path when the idea and first-sprint goal are already focused.</small></span>
                   </label>
                 </div>

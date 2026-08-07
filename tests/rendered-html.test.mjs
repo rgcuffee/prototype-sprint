@@ -31,7 +31,8 @@ test("server-renders the complete Prototype Sprint landing page", async () => {
   const html = await response.text();
   assert.match(html, /From idea to something <em>real<\/em> in one focused session\./);
   assert.match(html, /Live · Collaborative · AI-assisted/);
-  assert.match(html, /Book a Prototype Sprint/);
+  assert.match(html, /Book a Free Fit Call/);
+  assert.match(html, /Request a \$500 Sprint/);
   assert.match(html, /Working prototype/);
   assert.match(html, /Choose what matters most\./);
   assert.match(html, /Prototype Sprint<\/h3><span>3 hours<\/span>/);
@@ -40,8 +41,8 @@ test("server-renders the complete Prototype Sprint landing page", async () => {
   assert.match(html, /<details/);
   assert.match(html, /Is a deployed prototype guaranteed\?/);
   assert.match(html, /A target—not a guaranteed bundle\./);
-  assert.match(html, /Book\. Prepare\. Build\./);
-  assert.match(html, /Work the pre-checklist/);
+  assert.match(html, /Choose\. Prepare\. Build\./);
+  assert.match(html, /Confirm fit &amp; prepare/);
   assert.match(html, /name="prototype-sprint-inquiry"/);
   assert.match(html, /data-netlify="true"/);
   assert.match(html, /What would make the first sprint a win\?/);
@@ -49,6 +50,9 @@ test("server-renders the complete Prototype Sprint landing page", async () => {
   assert.match(html, /client-owned Google Drive folder/);
   assert.match(html, /name="handoff-drive"/);
   assert.match(html, /Documentation &amp; handoff/);
+  assert.match(html, /name="start-path"/);
+  assert.match(html, /Free 15-minute Sprint Fit Call/);
+  assert.match(html, /Direct \$500 Prototype Sprint request/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
@@ -68,6 +72,7 @@ test("publishes interactive offering checklists and a form success page", async 
   assert.match(checklists, /Progress saves automatically on this device/);
   assert.match(checklists, /Shared Drive &amp; handoff/);
   assert.match(checklists, /Client-owned Google Drive folder created/);
+  assert.match(checklists, /Book a free fit call/);
 
   assert.equal(thanksResponse.status, 200);
   const thanks = await thanksResponse.text();
@@ -100,6 +105,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(netlifyForm, /name="form-name" value="prototype-sprint-inquiry"/);
   assert.match(netlifyForm, /name="sprint-win"/);
   assert.match(netlifyForm, /name="handoff-drive"/);
+  assert.match(netlifyForm, /name="start-path"/);
   assert.match(checklistClient, /Shared Drive & handoff/);
   assert.match(checklistClient, /window\.localStorage/);
   assert.match(checklistClient, /window\.print\(\)/);

@@ -128,6 +128,11 @@ const faqs = [
       "Potentially $0 per month at prototype scale. A prepared project can use GitHub Free for the repository, Netlify Free for hosting and form submissions, and Supabase Free for a lightweight backend—provided usage stays within each plan’s limits. If you already own the domain, there may be no new domain purchase either. Paid APIs, email, payment processing, higher traffic, or production requirements can add costs, and provider terms can change.",
   },
   {
+    question: "Do I need to take the free fit call first?",
+    answer:
+      "No. The free 15-minute Sprint Fit Call is the recommended starting point when you want to confirm scope, readiness, or whether a sprint is the right format. If your idea is already focused and you are ready to move, you can request the $500 Prototype Sprint directly. Either path starts with a short intake so the conversation is useful.",
+  },
+  {
     question: "Do I need to know how to code?",
     answer:
       "No. You need to understand the problem and be ready to make decisions. The technical implementation happens during the sprint, with the work visible as it takes shape.",
@@ -212,7 +217,7 @@ export default function Home() {
           <a href="/checklists">Checklists</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a className="button button-small" href={BOOKING_URL}>Book a sprint <Arrow /></a>
+        <a className="button button-small" href={BOOKING_URL}>Free fit call <Arrow /></a>
       </header>
 
       <main id="top">
@@ -225,11 +230,11 @@ export default function Home() {
               talking about an idea and start using it.
             </p>
             <div className="hero-actions">
-              <a className="button" href={BOOKING_URL}>Book a Prototype Sprint <span>$500</span></a>
-              <a className="button button-secondary" href="#menu">See what fits <Arrow /></a>
+              <a className="button" href={BOOKING_URL}>Book a Free Fit Call <span>15 min</span></a>
+              <a className="button button-secondary" href={BOOKING_URL}>Request a $500 Sprint <Arrow /></a>
             </div>
             <p className="micro-proof">
-              Come prepared and we can aim for a deployed prototype, landing page, or both.
+              Start with the free fit call, or request the sprint directly if your goal is already focused. Come prepared and we can aim for a deployed prototype, landing page, or both.
             </p>
           </div>
 
@@ -296,12 +301,12 @@ export default function Home() {
           <div className="section-shell">
             <div className="before-sprint">
               <div className="before-sprint-heading">
-                <div><p className="section-kicker">Before the clock starts</p><h2>Book. Prepare. Build.</h2></div>
-                <p>A short intake captures the goal for your first sprint. Then a practical checklist protects the session for decisions and building—not account setup and asset hunting.</p>
+                <div><p className="section-kicker">Before the clock starts</p><h2>Choose. Prepare. Build.</h2></div>
+                <p>Start with a free 15-minute fit call or request the $500 sprint directly. Either way, a short intake and practical checklist protect the session for decisions and building—not account setup and asset hunting.</p>
               </div>
               <ol className="booking-journey">
-                <li><span>01</span><div><h3>Book the sprint</h3><p>Tell us what you are building, who it is for, and what would make session one a win.</p></div></li>
-                <li><span>02</span><div><h3>Work the pre-checklist</h3><p>Prepare the accounts, access, content, assets, and decisions your chosen offering needs—including a client-owned Google Drive folder for shared materials and handoff.</p><a href="/checklists">Open the checklists <Arrow /></a></div></li>
+                <li><span>01</span><div><h3>Choose how to start</h3><p>Book the free fit call if you want to confirm scope, or request the sprint directly when you are ready to build.</p></div></li>
+                <li><span>02</span><div><h3>Confirm fit & prepare</h3><p>We confirm the best next step, then you prepare the accounts, access, assets, decisions, and client-owned Google Drive handoff folder.</p><a href="/checklists">Open the checklists <Arrow /></a></div></li>
                 <li><span>03</span><div><h3>Join the live session</h3><p>We confirm the priority, start the three-hour clock, and build together toward the best outcome.</p></div></li>
               </ol>
             </div>
@@ -366,7 +371,7 @@ export default function Home() {
                     <strong className="price">{price.price}</strong>
                     <p>{price.description}</p>
                     <small>{price.note}</small>
-                    {price.featured && <a href={BOOKING_URL}>Book this sprint <Arrow /></a>}
+                    {price.featured && <a href={BOOKING_URL}>Request this sprint <Arrow /></a>}
                   </article>
                 ))}
               </div>
@@ -481,12 +486,12 @@ export default function Home() {
           <div className="section-shell booking-layout">
             <div className="booking-copy">
               <p className="eyebrow light"><span /> 3 hours · $500 · live build</p>
-              <h2>Book the first sprint.</h2>
-              <p>Give us the starting point and your definition of a win. We will follow up with the right readiness checklist and next steps for scheduling.</p>
+              <h2>Choose how to start.</h2>
+              <p>Book the free 15-minute fit call to confirm scope and readiness, or request the $500 sprint directly when the goal is already focused. Both paths begin with the same useful context.</p>
               <ol>
-                <li><span>01</span>Share the idea and first-sprint goal</li>
-                <li><span>02</span>Complete the offering checklist</li>
-                <li><span>03</span>Meet live and start building</li>
+                <li><span>01</span>Choose a free fit call or direct sprint request</li>
+                <li><span>02</span>Confirm fit and complete the checklist</li>
+                <li><span>03</span>Schedule the sprint and start building</li>
               </ol>
               <small>No retainer. No guaranteed bundle. Just focused progress.</small>
             </div>
@@ -501,7 +506,20 @@ export default function Home() {
               <input type="hidden" name="form-name" value="prototype-sprint-inquiry" />
               <input type="hidden" name="subject" value="New Prototype Sprint inquiry" />
               <p className="honeypot"><label>Do not fill this out: <input name="bot-field" /></label></p>
-              <div className="form-heading"><span>SPRINT INTAKE</span><strong>What should we build first?</strong></div>
+              <div className="form-heading"><span>START HERE</span><strong>Free fit call or direct sprint?</strong></div>
+              <fieldset className="start-path-options">
+                <legend>Choose your starting path</legend>
+                <div>
+                  <label>
+                    <input type="radio" name="start-path" value="Free 15-minute Sprint Fit Call" defaultChecked required />
+                    <span><b>RECOMMENDED</b><strong>Free 15-minute Sprint Fit Call</strong><small>Confirm scope, readiness, and whether the sprint is a good fit.</small></span>
+                  </label>
+                  <label>
+                    <input type="radio" name="start-path" value="Direct $500 Prototype Sprint request" required />
+                    <span><b>READY TO BUILD</b><strong>Request the $500 Prototype Sprint</strong><small>Use this path when the idea and first-sprint goal are already focused.</small></span>
+                  </label>
+                </div>
+              </fieldset>
               <div className="form-row">
                 <label>First name<input name="first-name" autoComplete="given-name" required /></label>
                 <label>Last name<input name="last-name" autoComplete="family-name" required /></label>
@@ -529,8 +547,8 @@ export default function Home() {
               <label>Shared Google Drive folder <small className="field-help">Optional now; we will ask for a client-owned folder before the session.</small><input type="url" name="handoff-drive" inputMode="url" placeholder="https://drive.google.com/…" /></label>
               <label>Anything else we should know?<textarea name="notes" rows={2} /></label>
               <label className="consent-row"><input type="checkbox" name="readiness-agreement" value="I understand the sprint is time-boxed" required /><span>I understand this is a time-boxed working session, not a guaranteed feature bundle.</span></label>
-              <button className="button form-submit" type="submit">Send sprint request <Arrow /></button>
-              <p className="form-note">Your answers are used to assess fit and send the right pre-sprint checklist.</p>
+              <button className="button form-submit" type="submit">Send my request <Arrow /></button>
+              <p className="form-note">No payment is taken here. We use your answers to assess fit and send the right next step.</p>
             </form>
           </div>
         </section>

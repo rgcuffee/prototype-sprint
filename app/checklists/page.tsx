@@ -21,7 +21,7 @@ export default function ChecklistsPage() {
         <nav aria-label="Checklist page navigation">
           <a href="/#how-it-works">How it works</a>
           <a href="/#pricing">Pricing</a>
-          <a className="button button-small" href="/#booking">Book a sprint <span aria-hidden="true">↗</span></a>
+          <a className="button button-small" href="/#booking">Free fit call <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
       <section className="checklist-hero section-shell">
@@ -33,7 +33,7 @@ export default function ChecklistsPage() {
       <section className="checklist-bottom-cta">
         <div className="section-shell">
           <div><p className="section-kicker light">Ready enough is enough</p><h2>You do not need every box checked.</h2></div>
-          <div><p>The checklist helps us spend more of the sprint building. A client-owned Google Drive folder becomes the shared home for inputs, documentation, exports, and final handoff. If you are still at idea stage, we will simply use more of the session for focus and setup.</p><a className="button button-light" href="/#booking">Share your sprint goal <span aria-hidden="true">↗</span></a></div>
+          <div><p>The checklist helps us spend more of the sprint building. A client-owned Google Drive folder becomes the shared home for inputs, documentation, exports, and final handoff. If you are unsure where to begin, start with the free fit call.</p><div className="checklist-cta-actions"><a className="button button-light" href="/#booking">Book a free fit call <span aria-hidden="true">↗</span></a><a href="/#booking">Ready now? Request the $500 sprint <span aria-hidden="true">↗</span></a></div></div>
         </div>
       </section>
     </main>

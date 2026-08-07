@@ -16,7 +16,7 @@ export default function ThanksPage() {
         <span className="thanks-number">01</span>
         <p className="section-kicker">Sprint request received</p>
         <h1>Good. The idea is already moving.</h1>
-        <p>We will review your goal and priorities, then follow up with the right pre-sprint checklist, shared Google Drive handoff setup, and scheduling next steps.</p>
+        <p>We will review your chosen starting path, goal, and priorities, then follow up with fit-call or sprint scheduling, the right pre-sprint checklist, and shared Google Drive handoff setup.</p>
         <div><a className="button" href="/checklists">Start the readiness checklist <span aria-hidden="true">↗</span></a><a className="button button-secondary" href="/">Back to the site</a></div>
       </div>
     </main>

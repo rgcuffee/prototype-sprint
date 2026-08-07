@@ -106,8 +106,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(page + layout, /codex-preview|SkeletonPreview|_sites-preview/);
   assert.match(netlifyForm, /data-netlify="true"/);
-  assert.match(netlifyForm, /data-netlify-honeypot="bot-field"/);
-  assert.match(netlifyForm, /name="bot-field"/);
+  assert.doesNotMatch(netlifyForm, /honeypot|bot-field/);
   assert.match(netlifyForm, /name="form-name" value="prototype-sprint-inquiry"/);
   assert.match(netlifyForm, /name="sprint-win"/);
   assert.doesNotMatch(netlifyForm, /name="handoff-drive"/);

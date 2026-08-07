@@ -506,11 +506,9 @@ export default function Home() {
               action="/thanks/"
               method="POST"
               data-netlify="true"
-              data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="prototype-sprint-inquiry" />
               <input type="hidden" name="subject" value="New Proto Sprint inquiry" />
-              <p className="honeypot"><label>Do not fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
               <div className="form-heading"><span>START HERE</span><strong>Free fit call or direct sprint?</strong></div>
               <fieldset className="start-path-options">
                 <legend>Choose your starting path</legend>

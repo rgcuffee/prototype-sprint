@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { MobileMenu } from "../MobileMenu";
 import styles from "./caseStudies.module.css";
 
 type MetaItem = [icon: string, label: string, value: string];
@@ -471,6 +472,7 @@ export function CaseStudiesPage() {
         <a className={styles.brand} href="/" aria-label="Proto Sprint home"><span>PS</span><span><strong>Proto Sprint</strong><small>Ideas into real products.</small></span></a>
         <nav aria-label="Main navigation"><a href="/#how-it-works">How it works</a><a href="/#menu">Sprint menu</a><a className={styles.current} href="/case-studies">Case studies</a><a href="/#pricing">Pricing</a></nav>
         <a className={styles.headerButton} href="/?start=fit#booking">Free fit call</a>
+        <MobileMenu current="case-studies" />
       </header>
       <div className={styles.switcherWrap} id="case-picker"><div className={styles.switcher} role="tablist" aria-label="Choose a case study">{visibleCases.map((study, index) => <button role="tab" aria-selected={active === index} className={active === index ? styles.active : ""} key={study.slug} onClick={() => selectCase(index)}><span>0{index + 1}</span>{study.tab}</button>)}</div></div>
       <CaseStudyView study={visibleCases[active]} />

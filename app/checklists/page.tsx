@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MobileMenu } from "../MobileMenu";
 import { ChecklistHub } from "./ChecklistHub";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function ChecklistsPage() {
           <Link href="/#pricing">Pricing</Link>
           <Link className="button button-small" href="/?start=fit#booking">Free fit call</Link>
         </nav>
+        <MobileMenu />
       </header>
       <section className="checklist-hero section-shell">
         <p className="eyebrow"><span /> Working pre-sprint checklists</p>

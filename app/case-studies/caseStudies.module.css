@@ -19,6 +19,7 @@
 .shell { width: min(1440px, calc(100% - 52px)); margin-inline: auto; }
 
 .siteHeader {
+  --mobile-menu-top: 78px;
   position: sticky; z-index: 60; top: 0; display: flex; min-height: 78px;
   align-items: center; justify-content: space-between; padding: 12px max(26px, calc((100vw - 1440px) / 2));
   border-bottom: 1px solid rgba(63,52,38,.12); background: rgba(246,241,231,.92); backdrop-filter: blur(14px);
@@ -349,7 +350,9 @@
 .footerBottom { display: flex; justify-content: space-between; gap: 30px; padding-top: 24px; border-top: 1px solid #343a3b; color: #777d7c; font-size: 8px; }.footerBottom p { margin: 0; }
 
 @media (max-width: 1180px) {
+  .siteHeader { backdrop-filter: none; }
   .siteHeader nav { display: none; }
+  .headerButton { display: none; }
   .heroGrid { grid-template-columns: 1fr; }
   .heroCopy { max-width: 900px; }
   .preview { width: 100%; }
@@ -364,7 +367,7 @@
 
 @media (max-width: 760px) {
   .shell { width: min(100% - 32px,620px); }
-  .siteHeader { min-height: 70px; padding-inline: 16px; }
+  .siteHeader { --mobile-menu-top: 70px; min-height: 70px; padding-inline: 16px; }
   .brand > span:first-child { width: 35px; height: 35px; font-size: 15px; }
   .brand strong { font-size: 13px; }.brand small { display: none; }
   .headerButton { min-height: 38px; padding-inline: 12px; font-size: 9px; }

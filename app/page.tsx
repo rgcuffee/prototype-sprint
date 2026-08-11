@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { BookingPathSync } from "./BookingPathSync";
+import { MobileMenu } from "./MobileMenu";
 import { NetlifyFormSubmit } from "./NetlifyFormSubmit";
 
 const FIT_CALL_URL = "/?start=fit#booking";
@@ -226,6 +227,7 @@ export default function Home() {
           <a href="#pricing">Pricing</a>
         </nav>
         <a className="button button-small" href={FIT_CALL_URL}>Free fit call</a>
+        <MobileMenu current="home" />
       </header>
 
       <main id="top">

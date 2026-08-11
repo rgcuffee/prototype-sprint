@@ -32,7 +32,8 @@ test("ships a Netlify-detectable quote form and confirmation page", async () => 
 
 test("includes responsive styling, SEO files, and local brand assets", async () => {
   const css = await readFile(new URL("styles.css", root), "utf8");
-  assert.match(css, /--green:\s*#9df330/i);
+  assert.match(css, /--green:\s*#79ba43/i);
+  assert.match(css, /--cream:\s*#faf8f1/i);
   assert.match(css, /@media \(max-width: 760px\)/);
   assert.match(css, /prefers-reduced-motion/);
   await Promise.all([

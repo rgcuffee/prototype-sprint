@@ -6,31 +6,11 @@
   NODE_VERSION = "24"
 
 [[redirects]]
-  from = "/checklists"
-  to = "/checklists.html"
-  status = 200
-
-[[redirects]]
-  from = "/checklists/"
-  to = "/checklists.html"
-  status = 200
+  from = "/thank"
+  to = "/thanks.html"
+  status = 301
 
 [[redirects]]
   from = "/thanks"
-  to = "/thanks.html"
-  status = 200
-
-[[redirects]]
-  from = "/thanks/"
-  to = "/thanks.html"
-  status = 200
-
-[[redirects]]
-  from = "/thank"
-  to = "/thanks.html"
-  status = 200
-
-[[redirects]]
-  from = "/thank/"
   to = "/thanks.html"
   status = 200

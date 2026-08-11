@@ -40,7 +40,7 @@ test("server-renders the complete Proto Sprint landing page", async () => {
   assert.match(html, /You own what we build\./);
   assert.match(html, /<details/);
   assert.match(html, /Is a deployed prototype guaranteed\?/);
-  assert.match(html, /A target—not a guaranteed bundle\./);
+  assert.match(html, /It is a target, not a guaranteed bundle\./);
   assert.match(html, /Choose\. Prepare\. Build\./);
   assert.match(html, /Confirm fit &amp; prepare/);
   assert.match(html, /name="prototype-sprint-inquiry"/);
@@ -97,7 +97,7 @@ test("removes starter artifacts and keeps product metadata and responsive styles
   assert.match(page, /const SPRINT_REQUEST_URL/);
   assert.match(page, /<main id="top">/);
   assert.match(page, /<summary>/);
-  assert.match(layout, /Proto Sprint — From idea to something real/);
+  assert.match(layout, /Proto Sprint: From idea to something real/);
   assert.match(layout, /\/og-v2\.png/);
   assert.match(layout, /process\.env\.URL/);
   assert.match(css, /--orange:\s*#cf5423/);

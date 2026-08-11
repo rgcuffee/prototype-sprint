@@ -115,12 +115,12 @@ const faqs = [
   {
     question: "Can you really build something in three hours?",
     answer:
-      "Sometimes, yes—and occasionally more than people expect. The result depends on scope, complexity, preparation, and how quickly decisions can be made. Focused web ideas can move surprisingly far; complicated ideas may use the sprint to prove the core workflow.",
+      "Sometimes, yes, and occasionally more than people expect. The result depends on scope, complexity, preparation, and how quickly decisions can be made. Focused web ideas can move surprisingly far; complicated ideas may use the sprint to prove the core workflow.",
   },
   {
     question: "Is a deployed prototype guaranteed?",
     answer:
-      "No. Deployment is often a realistic target for a prepared web project, but the sprint guarantees a dedicated working window—not a predetermined quantity of software. We prioritize the most useful outcome and label clearly what is functional, mocked, or incomplete.",
+      "No. Deployment is often a realistic target for a prepared web project, but the sprint guarantees a dedicated working window, not a predetermined quantity of software. We prioritize the most useful outcome and label clearly what is functional, mocked, or incomplete.",
   },
   {
     question: "Could we build a prototype and landing page together?",
@@ -130,7 +130,7 @@ const faqs = [
   {
     question: "What could the best-case ongoing software cost?",
     answer:
-      "Potentially $0 per month at prototype scale. A prepared project can use GitHub Free for the repository, Netlify Free for hosting and form submissions, and Supabase Free for a lightweight backend—provided usage stays within each plan’s limits. If you already own the domain, there may be no new domain purchase either. Paid APIs, email, payment processing, higher traffic, or production requirements can add costs, and provider terms can change.",
+      "Potentially $0 per month at prototype scale. A prepared project can use GitHub Free for the repository, Netlify Free for hosting and form submissions, and Supabase Free for a lightweight backend, provided usage stays within each plan’s limits. If you already own the domain, there may be no new domain purchase either. Paid APIs, email, payment processing, higher traffic, or production requirements can add costs, and provider terms can change.",
   },
   {
     question: "Do I need to take the free fit call first?",
@@ -292,7 +292,7 @@ export default function Home() {
             <h2>A working session with the work happening <em>in the room.</em></h2>
             <div>
               <p className="large-body">We clarify the idea, choose the highest-value outcome, and begin building immediately. You see the work as it happens and help steer the decisions.</p>
-              <p>No long requirements phase. No disappearing for a week. Just a focused loop of thinking, deciding, building, testing, and—when the project allows—shipping.</p>
+              <p>No long requirements phase. No disappearing for a week. Just a focused loop of thinking, deciding, building, testing, and shipping when the project allows.</p>
             </div>
           </div>
           <div className="truth-card">
@@ -307,7 +307,7 @@ export default function Home() {
             <div className="before-sprint">
               <div className="before-sprint-heading">
                 <div><p className="section-kicker">Before the clock starts</p><h2>Choose. Prepare. Build.</h2></div>
-                <p>Start with a free 15-minute fit call or request the $500 sprint directly. Either way, a short intake and practical checklist protect the session for decisions and building—not account setup and asset hunting.</p>
+                <p>Start with a free 15-minute fit call or request the $500 sprint directly. Either way, a short intake and practical checklist protect the session for decisions and building, not account setup and asset hunting.</p>
               </div>
               <ol className="booking-journey">
                 <li><span>01</span><div><h3>Choose how to start</h3><p>Book the free fit call if you want to confirm scope, or request the sprint directly when you are ready to build.</p></div></li>
@@ -320,10 +320,10 @@ export default function Home() {
               <p>Preparation changes how far we can get. Once the clock starts, we protect the time and build toward the most valuable next step.</p>
             </div>
             <ol className="process-grid">
-              <li><span>01</span><div className="process-line" /><h3>Focus</h3><p>Define the user, the problem, the smallest useful version, and what would make this session a win.</p><small>00:00—00:30</small></li>
-              <li><span>02</span><div className="process-line" /><h3>Build live</h3><p>Design and implement immediately. You react, answer questions, and make decisions in real time.</p><small>00:30—02:15</small></li>
-              <li><span>03</span><div className="process-line" /><h3>Refine</h3><p>Test the primary workflow, fix the obvious issues, and sharpen the surfaces that matter most.</p><small>02:15—02:45</small></li>
-              <li><span>04</span><h3>Ship & hand off</h3><p>Deploy when practical, label what is real or mocked, and organize documentation, final materials, and next steps in your shared Drive folder.</p><small>02:45—03:00</small></li>
+              <li><span>01</span><div className="process-line" /><h3>Focus</h3><p>Define the user, the problem, the smallest useful version, and what would make this session a win.</p><small>00:00–00:30</small></li>
+              <li><span>02</span><div className="process-line" /><h3>Build live</h3><p>Design and implement immediately. You react, answer questions, and make decisions in real time.</p><small>00:30–02:15</small></li>
+              <li><span>03</span><div className="process-line" /><h3>Refine</h3><p>Test the primary workflow, fix the obvious issues, and sharpen the surfaces that matter most.</p><small>02:15–02:45</small></li>
+              <li><span>04</span><h3>Ship & hand off</h3><p>Deploy when practical, label what is real or mocked, and organize documentation, final materials, and next steps in your shared Drive folder.</p><small>02:45–03:00</small></li>
             </ol>
           </div>
         </section>
@@ -344,7 +344,7 @@ export default function Home() {
           <div className="possibility-callout">
             <span>AN AMBITIOUS, PREPARED-SPRINT TARGET</span>
             <strong>Working prototype <i>+</i> landing page <i>+</i> deployment</strong>
-            <p>Possible when the concept is focused, the workflow is simple, and your content, accounts, and assets are ready. A target—not a guaranteed bundle.</p>
+            <p>Possible when the concept is focused, the workflow is simple, and your content, accounts, and assets are ready. It is a target, not a guaranteed bundle.</p>
           </div>
 
           <div className="menu-heading">
@@ -532,10 +532,10 @@ export default function Home() {
               </div>
               <label>Email<input type="email" name="email" autoComplete="email" required /></label>
               <label>Which session fits best?
-                <select name="offering" defaultValue="Proto Sprint — 3 hours / $500" required>
-                  <option>Proto Sprint — 3 hours / $500</option>
-                  <option>Iteration Session — 2 hours / $300</option>
-                  <option>Iteration Sprint — 3 hours / $450</option>
+                <select name="offering" defaultValue="Proto Sprint · 3 hours / $500" required>
+                  <option>Proto Sprint · 3 hours / $500</option>
+                  <option>Iteration Session · 2 hours / $300</option>
+                  <option>Iteration Sprint · 3 hours / $450</option>
                   <option>Brand or launch-focused sprint</option>
                   <option>Not sure yet</option>
                 </select>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ChecklistHub } from "./ChecklistHub";
 
 export const metadata: Metadata = {
-  title: "Pre-Sprint Checklists — Proto Sprint",
+  title: "Pre-Sprint Checklists | Proto Sprint",
   description:
     "Interactive readiness checklists for prototype, landing page, brand, and social launch sprints.",
 };

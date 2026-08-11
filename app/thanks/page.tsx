@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Sprint request received — Proto Sprint",
+  title: "Sprint request received | Proto Sprint",
   description: "Your Proto Sprint request has been received.",
 };
 

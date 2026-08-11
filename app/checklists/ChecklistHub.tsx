@@ -107,7 +107,7 @@ const offerings: Offering[] = [
     id: "brand",
     eyebrow: "BRAND & VISUAL SYSTEM",
     title: "Brand Starter",
-    summary: "Best for making an early product coherent enough to launch, demo, test, and share—not replacing a full strategy engagement.",
+    summary: "Best for making an early product coherent enough to launch, demo, test, and share, not replacing a full strategy engagement.",
     sections: [
       {
         title: "Position",
@@ -315,7 +315,7 @@ export function ChecklistHub() {
           <div className="progress-block" aria-live="polite">
             <div><strong>{percentage}%</strong><small>{activeChecked.length} of {allItemIds.length} ready</small></div>
             <div className="progress-track"><i style={{ width: `${percentage}%` }} /></div>
-            <p>{percentage === 100 ? "You are ready to protect the full session for building." : percentage >= 60 ? "Strong foundation. Bring the remaining decisions into the sprint." : "A useful start. Keep going—or arrive ready to work through the unknowns."}</p>
+            <p>{percentage === 100 ? "You are ready to protect the full session for building." : percentage >= 60 ? "Strong foundation. Bring the remaining decisions into the sprint." : "A useful start. Keep going, or arrive ready to work through the unknowns."}</p>
           </div>
           <div className="checklist-actions">
             <button type="button" onClick={() => window.print()}>Print checklist</button>

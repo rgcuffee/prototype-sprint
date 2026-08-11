@@ -225,7 +225,7 @@ export default function Home() {
           <a href="/case-studies">Case studies</a>
           <a href="#pricing">Pricing</a>
         </nav>
-        <a className="button button-small" href={FIT_CALL_URL}>Free fit call <Arrow /></a>
+        <a className="button button-small" href={FIT_CALL_URL}>Free fit call</a>
       </header>
 
       <main id="top">

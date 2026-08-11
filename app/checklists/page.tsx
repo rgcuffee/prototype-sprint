@@ -22,7 +22,7 @@ export default function ChecklistsPage() {
         <nav aria-label="Checklist page navigation">
           <Link href="/#how-it-works">How it works</Link>
           <Link href="/#pricing">Pricing</Link>
-          <Link className="button button-small" href="/?start=fit#booking">Free fit call <span aria-hidden="true">↗</span></Link>
+          <Link className="button button-small" href="/?start=fit#booking">Free fit call</Link>
         </nav>
       </header>
       <section className="checklist-hero section-shell">

@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-html-link-for-pages -- Full-page navigation avoids the broken client transition from this interactive case-study route. */
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./caseStudies.module.css";
@@ -466,9 +468,9 @@ export function CaseStudiesPage() {
   return (
     <div className={styles.page}>
       <header className={styles.siteHeader}>
-        <Link className={styles.brand} href="/" aria-label="Proto Sprint home"><span>PS</span><span><strong>Proto Sprint</strong><small>Ideas into real products.</small></span></Link>
-        <nav aria-label="Main navigation"><Link href="/#how-it-works">How it works</Link><Link href="/#menu">Sprint menu</Link><Link className={styles.current} href="/case-studies">Case studies</Link><Link href="/#pricing">Pricing</Link></nav>
-        <Link className={styles.headerButton} href="/?start=fit#booking">Free fit call <Arrow /></Link>
+        <a className={styles.brand} href="/" aria-label="Proto Sprint home"><span>PS</span><span><strong>Proto Sprint</strong><small>Ideas into real products.</small></span></a>
+        <nav aria-label="Main navigation"><a href="/#how-it-works">How it works</a><a href="/#menu">Sprint menu</a><a className={styles.current} href="/case-studies">Case studies</a><a href="/#pricing">Pricing</a></nav>
+        <a className={styles.headerButton} href="/?start=fit#booking">Free fit call</a>
       </header>
       <div className={styles.switcherWrap} id="case-picker"><div className={styles.switcher} role="tablist" aria-label="Choose a case study">{visibleCases.map((study, index) => <button role="tab" aria-selected={active === index} className={active === index ? styles.active : ""} key={study.slug} onClick={() => selectCase(index)}><span>0{index + 1}</span>{study.tab}</button>)}</div></div>
       <CaseStudyView study={visibleCases[active]} />

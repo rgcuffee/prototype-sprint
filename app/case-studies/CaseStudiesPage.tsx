@@ -2,14 +2,14 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- Full-page navigation avoids the broken client transition from this interactive case-study route. */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MobileMenu } from "../MobileMenu";
 import styles from "./caseStudies.module.css";
 
 type MetaItem = [icon: string, label: string, value: string];
 type Preview = {
-  kind: "website-intake" | "social-grid" | "dashboard" | "formation-platform" | "elder-care";
+  kind: "website-intake" | "social-grid" | "dashboard" | "formation-platform" | "elder-care" | "resource-system";
   name: string;
   nav: string[];
   button: string;
@@ -27,7 +27,7 @@ type TextSection = {
   paragraphs: string[];
   panelTitle: string;
   bullets: string[];
-  aside: { kind: "photo"; text: string; visual: "inbox" | "archive" | "spreadsheet" | "ecosystem" | "discharge" } | { kind: "quote"; text: string; cite: string };
+  aside: { kind: "photo"; text: string; visual: "inbox" | "archive" | "spreadsheet" | "ecosystem" | "discharge" | "notes" } | { kind: "quote"; text: string; cite: string };
 };
 type Solution = {
   title: string;
@@ -140,6 +140,62 @@ const cases: CaseStudy[] = [
     takeawayTitle: "Too big for Sally’s spreadsheet. Not quite ready for an enterprise software suite. That is a real stage.", takeaway: ["A lot of organizations live in this middle ground. The current systems technically work. The data exists. People know the process. But getting a useful answer means opening six tabs, filtering three sheets, asking the one person who remembers how everything fits together, and hoping nobody needs a report by lunch.", "Before replacing everything, there is another option: build a decision layer on top of what already works. A focused dashboard or internal tool can turn existing data into visibility, alerts, priorities, and next actions without forcing a giant software implementation."], closer: "The question is not just ‘Do we have the data?’ It is ‘Are we using it to make decisions, or are we dumping it somewhere and hoping nobody asks?’",
   },
   {
+    slug: "host-operations-system",
+    tab: "Hosting operations product",
+    category: "Product / education",
+    artifact: "Paid product + free sample",
+    workStatus: "Based on real work",
+    title: "From Hosting Know-How to a Digital Product People Can Buy.",
+    dek: "How we productized an experienced host’s working knowledge into a paid digital operating system, then built a genuinely useful free checklist to demonstrate the method and create a natural path to purchase.",
+    meta: [["◉", "Industry", "Short-term rental operations"], ["◷", "Timeframe", "Focused product sprint"], ["▣", "Deliverable", "Paid product + free sample"], ["↗", "Status", "Sellable product draft"]],
+    note: "Based on real product strategy, content development, and launch-system work for a service-based organization. The name, industry, audience, and identifying details have been changed, but the underlying product architecture, free-to-paid pathway, and deliverables reflect the original engagement.",
+    preview: {
+      kind: "resource-system",
+      name: "HOST",
+      nav: ["Operations", "Free checklist", "Property setup"],
+      button: "Get the checklist",
+      title: "Run the stay, not the scramble.",
+      copy: "A paid digital operating system for independent hosts who want consistent turnovers, clearer guest communication, and fewer details hiding in memory.",
+      actions: ["Get the free checklist", "See the full system"],
+      deviceTitle: "The guest-ready turnover",
+      fields: ["Reset every room", "Restock essentials", "Confirm access", "Send arrival message"],
+      deviceButton: "Start the turnover",
+      stats: [["1", "Sellable digital product"], ["1", "Free funnel asset"], ["14", "Operating cards"], ["1", "Repeatable method"]],
+    },
+    starting: {
+      label: "The starting point",
+      title: "The expertise was valuable. There was nothing customers could buy yet.",
+      paragraphs: ["The host knew what made a stay feel effortless to a guest, but that knowledge only created value while they were personally operating properties or advising someone one-to-one. Useful procedures existed across text threads, saved replies, notes, calendars, and memory, but there was no standalone offer that could be sold to other hosts.", "The challenge was to turn experience into a self-directed digital product, not another generic hosting guide. It needed to help a buyer run a real turnover, define what guest-ready meant, and deliver value without requiring more of the expert’s time for every sale."],
+      panelTitle: "Key challenges",
+      bullets: ["Valuable expertise was trapped inside service delivery and individual conversations.", "Turnover procedures were scattered across messages, notes, and personal memory.", "There was no defined digital offer that another host could discover and purchase.", "The free checklist needed to create a real result while demonstrating the larger method.", "The paid product needed to deliver value independently, without adding another client hour."],
+      aside: { kind: "photo", text: "Before: valuable expertise, no product to buy.", visual: "notes" },
+    },
+    opportunity: {
+      label: "The opportunity",
+      title: "Package the method once, then sell it more than once.",
+      paragraphs: ["The strongest product concept was a complete turnover loop: reset every room, inspect the details guests notice, restock the essentials, confirm access, and send the right arrival information. That repeatable method could become a paid digital system that other hosts purchase and use without requiring one-to-one consulting.", "The free checklist would not summarize or weaken the paid product. It would guide one property from checkout to guest-ready, give a prospective buyer a complete win, and demonstrate the quality of the larger system. Public micro-tools attract the audience, the checklist earns trust, and the paid product becomes the logical next step."],
+      panelTitle: "Product principles",
+      bullets: ["Build around a result buyers already want: a consistently guest-ready property.", "Make the paid system usable without the expert being present.", "Give the free checklist a complete start, inspection point, and finish.", "Use the free result to prove the same method the paid product expands.", "Design content, delivery, pricing, and launch messaging as one sales system."],
+      aside: { kind: "quote", text: "The free checklist should not feel like a sample. A host should be able to use it for the next turnover and know the property is ready.", cite: "Product strategy direction" },
+    },
+    solutionTitle: "A sellable digital product with a useful free sample in front of it.",
+    solutionCopy: "The work became a connected product funnel rather than a pile of templates. Public micro-tools attract the right audience, the free turnover checklist proves the method, and the paid system gives buyers the complete operating framework without requiring another consulting engagement.",
+    solutions: [
+      { title: "Audience-building tools", copy: "Short posts, guest-message prompts, and property-readiness cards make the expertise visible and attract hosts already experiencing the problem.", kind: "feed", metrics: [["1", "Core promise"], ["Many", "Discovery points"]] },
+      { title: "Free sample that earns trust", copy: "The turnover checklist delivers a complete operational win while showing prospective buyers how practical and usable the larger system will be.", kind: "calendar", cells: ["Open", "Reset", "Inspect", "Restock", "Access", "Message", "Photo", "Ready"], hot: [1, 2, 4, 7] },
+      { title: "Paid digital product", copy: "Fourteen operating cards package the full method into a product that can be purchased repeatedly without repeating the original service work.", kind: "chart", metrics: [["14", "Operating cards"], ["1", "Sellable system"]] },
+    ],
+    impactLabel: "The result",
+    impactTitle: "The expert now has a digital product they can sell without adding another client hour.",
+    impactCopy: "The engagement produced a paid hosting system, a high-value free sample, the public-facing product hub, social launch materials, a downloadable property card, and pricing direction. Instead of monetizing the expertise only through direct service, the creator now has a product that can be discovered, purchased, and delivered repeatedly.",
+    impacts: [["▦", "New revenue offer", "The expertise now exists as a defined digital product with a clear buyer and promise."], ["↺", "Repeatable sales", "The same product can be sold again without recreating the work for each customer."], ["◎", "Useful lead funnel", "The free checklist earns attention and trust by completing a real turnover."], ["↗", "Coherent launch", "Public content, free value, and the paid offer move buyers through one clear pathway."]],
+    next: "Complete operator review, connect payment and digital delivery, test the free checklist across real turnovers, and use early conversion and buyer feedback to refine pricing and the public launch.",
+    nextAction: "Build the launch version",
+    takeawayTitle: "You cannot scale expertise one appointment at a time.",
+    takeaway: ["When every dollar depends on another call, project, appointment, or hour of your direct attention, growth eventually reaches the limits of your calendar. A digital product creates a different kind of offer: one that packages the method you already use, can be purchased and delivered repeatedly, and continues working for the business even when you are off the clock.", "A useful free sample strengthens both the funnel and the brand. It gives prospective buyers a complete first result, demonstrates how you think, and turns broad claims about your expertise into something tangible people can save, share, and experience. The paid product then provides the complete system and a new revenue path beyond one-service-at-a-time work."],
+    closer: "A strong digital product works twice: it creates an offer that can sell beyond your available hours, and it gives your brand something concrete that proves what you know.",
+  },
+  {
     slug: "digital-emmaus", tab: "Digital Emmaus", category: "Product strategy / media", artifact: "Platform prototype", workStatus: "Real work",
     hidden: true,
     title: "One Journey Through a Fragmented Content Ecosystem.",
@@ -216,7 +272,7 @@ const cases: CaseStudy[] = [
   },
 ];
 
-const caseOrder = ["nevada-elder-care", "powerwashing", "apprenticeship-dashboard", "historical-society"];
+const caseOrder = ["nevada-elder-care", "powerwashing", "host-operations-system", "apprenticeship-dashboard", "historical-society"];
 const visibleCases = cases
   .filter(study => !study.hidden)
   .sort((a, b) => caseOrder.indexOf(a.slug) - caseOrder.indexOf(b.slug));
@@ -311,21 +367,50 @@ function ElderCarePreview({ preview }: { preview: Preview }) {
   );
 }
 
+function ResourceSystemPreview({ preview }: { preview: Preview }) {
+  return (
+    <div className={styles.resourceHero}>
+      <div className={styles.resourceCopy}>
+        <small>ONE STANDARD · EVERY STAY</small>
+        <h2>{preview.title}</h2>
+        <p>{preview.copy}</p>
+        <div><b>{preview.actions[0]}</b><span>{preview.actions[1]}</span></div>
+      </div>
+      <div className={styles.resourceStack} aria-hidden="true">
+        <article className={styles.fullCompanion}>
+          <small>THE COMPLETE HOSTING SYSTEM</small>
+          <strong>{preview.name}</strong>
+          <span>Every stay, ready.</span>
+          <i>14 operating cards</i>
+        </article>
+        <article className={styles.freeReset}>
+          <small>FREE TURNOVER CHECKLIST</small>
+          <strong>Reset.<br />Restock.<br />Confirm.</strong>
+          <p>One complete path from checkout to a guest-ready property.</p>
+          <i>One turnover · free</i>
+        </article>
+        <div className={styles.handoffCard}><span>TODAY’S ARRIVAL CARD</span><b>Property ready · access confirmed</b><i>Next check-in 4:00 PM →</i></div>
+      </div>
+    </div>
+  );
+}
+
 function ProductPreview({ preview }: { preview: Preview }) {
   return (
-    <div className={`${styles.preview} ${preview.kind === "dashboard" ? styles.dashboardPreview : ""} ${preview.kind === "elder-care" ? styles.elderPreview : ""}`} aria-label={`Prototype preview for ${preview.name}`}>
-      {preview.kind !== "dashboard" && preview.kind !== "elder-care" && <div className={styles.mockHeader}><strong>{preview.name}</strong><div>{preview.nav.map(item => <span key={item}>{item}</span>)}</div><b>{preview.button}</b></div>}
+    <div className={`${styles.preview} ${preview.kind === "dashboard" ? styles.dashboardPreview : ""} ${preview.kind === "elder-care" ? styles.elderPreview : ""} ${preview.kind === "resource-system" ? styles.resourcePreview : ""}`} aria-label={`Prototype preview for ${preview.name}`}>
+      {preview.kind !== "dashboard" && preview.kind !== "elder-care" && preview.kind !== "resource-system" && <div className={styles.mockHeader}><strong>{preview.name}</strong><div>{preview.nav.map(item => <span key={item}>{item}</span>)}</div><b>{preview.button}</b></div>}
       {preview.kind === "website-intake" && <WebsiteIntakePreview preview={preview} />}
       {preview.kind === "social-grid" && <SocialGridPreview preview={preview} />}
       {preview.kind === "dashboard" && <DashboardPreview preview={preview} />}
       {preview.kind === "formation-platform" && <FormationPlatformPreview preview={preview} />}
       {preview.kind === "elder-care" && <ElderCarePreview preview={preview} />}
-      {preview.kind !== "dashboard" && preview.kind !== "elder-care" && <div className={styles.stats}>{preview.stats.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>}
+      {preview.kind === "resource-system" && <ResourceSystemPreview preview={preview} />}
+      {preview.kind !== "dashboard" && preview.kind !== "elder-care" && <div className={`${styles.stats} ${preview.kind === "resource-system" ? styles.resourceStats : ""}`}>{preview.stats.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>}
     </div>
   );
 }
 
-function StartingVisual({ visual, text }: { visual: "inbox" | "archive" | "spreadsheet" | "ecosystem" | "discharge"; text: string }) {
+function StartingVisual({ visual, text }: { visual: "inbox" | "archive" | "spreadsheet" | "ecosystem" | "discharge" | "notes"; text: string }) {
   return (
     <figure className={`${styles.startingVisual} ${styles[`${visual}Visual`]}`}>
       {visual === "inbox" && (
@@ -390,6 +475,18 @@ function StartingVisual({ visual, text }: { visual: "inbox" | "archive" | "sprea
           </div>
         </div>
       )}
+      {visual === "notes" && (
+        <div className={styles.notesWindow} aria-hidden="true">
+          <div className={styles.artifactTop}><b>First product notes</b><span>Beyond hourly work</span></div>
+          <div className={styles.notesGrid}>
+            <article><small>PRODUCT GOAL</small><b>Sell without scheduling a call</b><span>one product · repeated delivery</span></article>
+            <article><small>BUYER RESULT</small><b>A guest-ready property</b><span>clear, specific, immediately useful</span></article>
+            <article><small>FREE SAMPLE</small><b>Prove the method first</b><span>one complete turnover checklist</span></article>
+            <article><small>DELIVERY</small><b>Instant access after purchase</b><span>no appointment · no hourly work</span></article>
+          </div>
+          <div className={styles.notesQuestion}><small>THE FIRST PRODUCT QUESTION</small><b>What can customers buy without buying another hour of my time?</b></div>
+        </div>
+      )}
       <figcaption>{text}</figcaption>
     </figure>
   );
@@ -414,7 +511,6 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
     <main id={study.slug} className={styles.case}>
       <section className={styles.hero}>
         <div className={styles.shell}>
-          <a className={styles.back} href="#case-picker">← Browse all case studies</a>
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
               <p className={styles.eyebrow}>Case study <span>{study.category}</span><span className={styles.artifactBadge}>{study.artifact}</span><span className={styles.workBadge}>{study.workStatus}</span></p>
@@ -451,20 +547,30 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
 
 export function CaseStudiesPage() {
   const [active, setActive] = useState(0);
+  const switcherRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const selectFromHash = () => {
-      const slug = window.location.hash.slice(1);
+      const rawSlug = window.location.hash.slice(1);
+      const slug = rawSlug === "tend-care-system" ? "host-operations-system" : rawSlug;
       const index = visibleCases.findIndex(study => study.slug === slug);
-      if (index >= 0) setActive(index);
+      if (index >= 0) {
+        setActive(index);
+        if (slug !== rawSlug) window.history.replaceState(null, "", `#${slug}`);
+      }
     };
     selectFromHash();
     window.addEventListener("hashchange", selectFromHash);
     return () => window.removeEventListener("hashchange", selectFromHash);
   }, []);
+  useEffect(() => {
+    const selectedTab = switcherRef.current?.querySelector<HTMLButtonElement>('[aria-selected="true"]');
+    selectedTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [active]);
   const selectCase = (index: number) => {
     setActive(index);
     window.history.replaceState(null, "", `#${visibleCases[index].slug}`);
-    window.requestAnimationFrame(() => document.getElementById("case-picker")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior }));
   };
   return (
     <div className={styles.page}>
@@ -474,7 +580,10 @@ export function CaseStudiesPage() {
         <a className={styles.headerButton} href="/?start=fit#booking">Free fit call</a>
         <MobileMenu current="case-studies" />
       </header>
-      <div className={styles.switcherWrap} id="case-picker"><div className={styles.switcher} role="tablist" aria-label="Choose a case study">{visibleCases.map((study, index) => <button role="tab" aria-selected={active === index} className={active === index ? styles.active : ""} key={study.slug} onClick={() => selectCase(index)}><span>0{index + 1}</span>{study.tab}</button>)}</div></div>
+      <div className={styles.switcherWrap}>
+        <div className={styles.mobileSwitcherCue} aria-hidden="true"><strong>Browse all {visibleCases.length} case studies</strong><span>Swipe <i>→</i></span></div>
+        <div ref={switcherRef} className={styles.switcher} role="tablist" aria-label="Choose a case study">{visibleCases.map((study, index) => <button role="tab" aria-selected={active === index} className={active === index ? styles.active : ""} key={study.slug} onClick={() => selectCase(index)}><span>0{index + 1}</span>{study.tab}</button>)}</div>
+      </div>
       <CaseStudyView study={visibleCases[active]} />
       <footer className={styles.footer}><div className={styles.footerTop}><Link className={styles.brand} href="/"><span>PS</span><span><strong>Proto Sprint</strong><small>Ideas into real products.</small></span></Link><p>Modern tools. Founder-owned. Built for speed.</p><Link href="/?start=fit#booking">Start with a free fit call <Arrow /></Link></div><div className={styles.footerBottom}><p>Fictionalized details are disclosed within each case study. Real products are identified where shown.</p><span>Proto Sprint · 2026</span></div></footer>
     </div>

@@ -218,9 +218,9 @@ export default function Home() {
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#how-it-works">How it works</a>
           <a href="#menu">Sprint menu</a>
+          <a href="/case-studies">Case studies</a>
           <a href="#pricing">Pricing</a>
           <a href="/checklists">Checklists</a>
-          <a href="#faq">FAQ</a>
         </nav>
         <a className="button button-small" href={FIT_CALL_URL}>Free fit call <Arrow /></a>
       </header>
@@ -571,7 +571,7 @@ export default function Home() {
         </div>
         <div className="footer-bottom">
           <p>Proto Sprint deliverables are not automatically production-ready software.</p>
-          <div><a href="#how-it-works">How it works</a><a href="#pricing">Pricing</a><a href="/checklists">Checklists</a><a href="#faq">FAQ</a></div>
+          <div><a href="#how-it-works">How it works</a><a href="/case-studies">Case studies</a><a href="#pricing">Pricing</a><a href="/checklists">Checklists</a><a href="#faq">FAQ</a></div>
           <span>Proto Sprint · 2026</span>
         </div>
       </footer>

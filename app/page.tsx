@@ -13,24 +13,28 @@ const outcomes = [
     title: "Working prototype",
     copy: "A focused product experience people can click, use, and react to.",
     preview: "product",
+    caseSlug: "nevada-elder-care",
   },
   {
     number: "02",
     title: "Landing page",
     copy: "A clear, high-converting home for your idea and its next step.",
     preview: "landing",
+    caseSlug: "powerwashing",
   },
   {
     number: "03",
     title: "Brand starter",
     copy: "A practical visual system that makes an early product feel coherent.",
     preview: "brand",
+    caseSlug: null,
   },
   {
     number: "04",
     title: "Social launch kit",
     copy: "Messaging and reusable assets to help you begin talking about it.",
     preview: "social",
+    caseSlug: "historical-society",
   },
 ];
 
@@ -220,7 +224,6 @@ export default function Home() {
           <a href="#menu">Sprint menu</a>
           <a href="/case-studies">Case studies</a>
           <a href="#pricing">Pricing</a>
-          <a href="/checklists">Checklists</a>
         </nav>
         <a className="button button-small" href={FIT_CALL_URL}>Free fit call <Arrow /></a>
       </header>
@@ -238,6 +241,7 @@ export default function Home() {
               <a className="button" href={FIT_CALL_URL}>Book a Free Fit Call <span>15 min</span></a>
               <a className="button button-secondary" href={SPRINT_REQUEST_URL}>Request a $500 Sprint <Arrow /></a>
             </div>
+            <a className="hero-case-link" href="/case-studies">See what a Proto Sprint can produce <Arrow /></a>
             <p className="micro-proof">
               Start with the free fit call, or request the sprint directly if your goal is already focused. Come prepared and we can aim for a deployed prototype, landing page, or both.
             </p>
@@ -298,7 +302,7 @@ export default function Home() {
           <div className="truth-card">
             <span>THE PROMISE</span>
             <p>Get as far as we responsibly can toward something you can <strong>use, test, share, or demonstrate.</strong></p>
-            <small>The session is time-boxed. The outcome is prioritized together.</small>
+            <a className="truth-card-link" href="/case-studies">See the results <Arrow /></a>
           </div>
         </section>
 
@@ -331,13 +335,13 @@ export default function Home() {
         <section className="outcomes-section section-shell" id="menu">
           <div className="section-heading outcomes-heading">
             <div><p className="section-kicker">Possible outcomes</p><h2>What we can build.</h2></div>
-            <p>Every idea is different. A strong, prepared sprint can cover several connected outputs; a technically complex project may use the full session on one core flow.</p>
+            <div className="section-heading-aside"><p>Every idea is different. A strong, prepared sprint can cover several connected outputs; a technically complex project may use the full session on one core flow.</p><a href="/case-studies">See these outcomes in practice <Arrow /></a></div>
           </div>
           <div className="outcome-grid">
             {outcomes.map((outcome) => (
               <article className="outcome-card" key={outcome.title}>
                 <ProductPreview type={outcome.preview} />
-                <div className="outcome-card-copy"><span>{outcome.number}</span><h3>{outcome.title}</h3><p>{outcome.copy}</p></div>
+                <div className="outcome-card-copy"><span>{outcome.number}</span><h3>{outcome.title}</h3><p>{outcome.copy}</p>{outcome.caseSlug && <a className="outcome-case-link" href={`/case-studies#${outcome.caseSlug}`}>View related case <Arrow /></a>}</div>
               </article>
             ))}
           </div>
@@ -355,7 +359,7 @@ export default function Home() {
             {menuGroups.map((group, groupIndex) => (
               <article className="menu-group" key={group.label}>
                 <div className="menu-label"><span>0{groupIndex + 1}</span><h3>{group.label}</h3></div>
-                <ul>{group.items.map((item) => <li key={item}><span>+</span>{item}</li>)}</ul>
+                <ul>{group.items.map((item) => <li key={item}><span>+</span>{item === "Dashboard" ? <a href="/case-studies#apprenticeship-dashboard">Dashboard <Arrow /></a> : item}</li>)}</ul>
               </article>
             ))}
           </div>
@@ -376,6 +380,7 @@ export default function Home() {
                     <strong className="price">{price.price}</strong>
                     <p>{price.description}</p>
                     <small>{price.note}</small>
+                    {price.featured && <a className="price-case-link" href="/case-studies#powerwashing">See a focused sprint in practice <Arrow /></a>}
                     {price.featured && <a href={SPRINT_REQUEST_URL}>Request this sprint <Arrow /></a>}
                   </article>
                 ))}
@@ -437,8 +442,17 @@ export default function Home() {
 
         <section className="live-section section-shell">
           <div className="live-visual" aria-hidden="true">
-            <div className="cursor-card cursor-one"><span>YOU</span><i /></div>
-            <div className="cursor-card cursor-two"><span>BUILDER</span><i /></div>
+            <div className="session-modes">
+              <article className="session-mode">
+                <div className="session-mode-head"><span>IN PERSON</span><b>Same room</b></div>
+                <div className="in-person-scene"><i>YOU</i><b><span /><span /><span /></b><i>BUILDER</i></div>
+              </article>
+              <article className="session-mode">
+                <div className="session-mode-head"><span>ZOOM</span><b>Shared screen</b></div>
+                <div className="zoom-scene"><i><b>YOU</b><span>RC</span></i><i><b>BUILDER</b><span>PS</span></i></div>
+              </article>
+            </div>
+            <div className="mode-connector"><i /><b>SAME LIVE BUILD</b><i /></div>
             <div className="live-window">
               <div className="live-window-bar"><i /><i /><i /><span>prototype / primary-flow</span></div>
               <div className="live-window-body">
@@ -450,7 +464,7 @@ export default function Home() {
           <div className="live-copy">
             <p className="section-kicker">Why build live?</p>
             <h2>Shorten the distance between <em>idea and feedback.</em></h2>
-            <p className="large-body">Instead of disappearing and guessing what you meant, we build together. You can react while the product takes shape and redirect the session toward what matters most.</p>
+            <p className="large-body">Whether we work in person or over Zoom, we build together. You can react while the product takes shape and redirect the session toward what matters most.</p>
             <p>AI-assisted development helps us move unusually fast. The real value is knowing what to build, connecting the pieces, testing the result, and turning the output into something useful.</p>
           </div>
         </section>
@@ -499,6 +513,7 @@ export default function Home() {
                 <li><span>03</span>Schedule the sprint and start building</li>
               </ol>
               <small>No retainer. No guaranteed bundle. Just focused progress.</small>
+              <a className="booking-case-link" href="/case-studies">Want to see the work first? Browse the case studies. <Arrow /></a>
             </div>
             <form
               className="booking-form"

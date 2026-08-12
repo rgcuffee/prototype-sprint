@@ -506,7 +506,7 @@ function StorySection({ section }: { section: TextSection }) {
   );
 }
 
-function CaseStudyView({ study }: { study: CaseStudy }) {
+function CaseStudyView({ study, nextStudy, nextNumber, onNext }: { study: CaseStudy; nextStudy: CaseStudy; nextNumber: number; onNext: () => void }) {
   return (
     <main id={study.slug} className={styles.case}>
       <section className={styles.hero}>
@@ -541,6 +541,14 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
         </div>
       </section>
       <section className={styles.takeaway}><div className={styles.shell}><div><p>So what does this mean for you?</p><h2>{study.takeawayTitle}</h2>{study.takeaway.map(item => <span key={item}>{item}</span>)}<strong>{study.closer}</strong></div></div></section>
+      <section className={styles.nextCase} aria-label="Continue through the case studies">
+        <div className={styles.shell}>
+          <button type="button" onClick={onNext}>
+            <span><small>Next case study · 0{nextNumber}</small><strong>{nextStudy.tab}</strong></span>
+            <b aria-hidden="true">→</b>
+          </button>
+        </div>
+      </section>
     </main>
   );
 }
@@ -584,7 +592,7 @@ export function CaseStudiesPage() {
         <div className={styles.mobileSwitcherCue} aria-hidden="true"><strong>Browse all {visibleCases.length} case studies</strong><span>Swipe <i>→</i></span></div>
         <div ref={switcherRef} className={styles.switcher} role="tablist" aria-label="Choose a case study">{visibleCases.map((study, index) => <button role="tab" aria-selected={active === index} className={active === index ? styles.active : ""} key={study.slug} onClick={() => selectCase(index)}><span>0{index + 1}</span>{study.tab}</button>)}</div>
       </div>
-      <CaseStudyView study={visibleCases[active]} />
+      <CaseStudyView study={visibleCases[active]} nextStudy={visibleCases[(active + 1) % visibleCases.length]} nextNumber={(active + 1) % visibleCases.length + 1} onNext={() => selectCase((active + 1) % visibleCases.length)} />
       <footer className={styles.footer}><div className={styles.footerTop}><Link className={styles.brand} href="/"><span>PS</span><span><strong>Proto Sprint</strong><small>Ideas into real products.</small></span></Link><p>Modern tools. Founder-owned. Built for speed.</p><Link href="/?start=fit#booking">Start with a free fit call <Arrow /></Link></div><div className={styles.footerBottom}><p>Fictionalized details are disclosed within each case study. Real products are identified where shown.</p><span>Proto Sprint · 2026</span></div></footer>
     </div>
   );

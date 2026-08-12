@@ -388,6 +388,15 @@
 .takeaway span { display: block; max-width: 1090px; margin-top: 13px; color: #5d584f; font-size: 13px; line-height: 1.7; }
 .takeaway strong { display: block; max-width: 1050px; margin-top: 24px; color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.5; }
 
+.nextCase { padding: 44px 0 45px; border-top: 1px solid var(--line); background: var(--paper); }
+.nextCase button { display: flex; width: 100%; min-height: 132px; align-items: center; justify-content: space-between; gap: 30px; padding: 27px 34px; border: 1px solid #d5c5b3; border-radius: 14px; background: #efe5d8; color: var(--ink); cursor: pointer; text-align: left; box-shadow: 0 16px 38px rgba(58,40,24,.07); transition: border-color 180ms ease, background 180ms ease, transform 180ms ease; }
+.nextCase button:hover { border-color: var(--orange); background: #f4e9dc; transform: translateY(-2px); }
+.nextCase button > span { display: flex; min-width: 0; flex-direction: column; gap: 9px; }
+.nextCase small { color: #e8794f; font-size: 8px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+.nextCase strong { padding-bottom: .1em; font-family: var(--serif); font-size: clamp(24px,2.7vw,36px); font-weight: 600; letter-spacing: -.035em; line-height: 1.14; }
+.nextCase button > b { display: grid; width: 58px; height: 58px; flex: none; place-items: center; border: 1px solid #cdb7a2; border-radius: 50%; background: var(--paper); color: var(--orange); font-size: 25px; font-weight: 400; transition: transform 180ms ease; }
+.nextCase button:hover > b { transform: translateX(5px); }
+
 .footer { padding: 47px max(26px,calc((100vw - 1240px)/2)) 36px; background: #111617; color: #f4eee5; }
 .footerTop { display: grid; grid-template-columns: 1fr 1fr auto; align-items: center; gap: 35px; padding-bottom: 30px; }
 .footer .brand small { color: #969994; }.footerTop p { margin: 0; color: #aaa9a4; font-size: 11px; }.footerTop > a:last-child { color: #e8794f; font-size: 11px; font-weight: 750; }
@@ -451,6 +460,7 @@
   .impacts { grid-template-columns: 1fr 1fr; }.impacts > div { min-height: 205px; }.impacts > div:nth-child(2) { border-right: 0; }.impacts > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .impacts b { margin-top: 28px; }
   .takeaway { padding: 60px 0; }.takeaway .shell > div { padding: 29px 24px; }.takeaway h2 { font-size: 35px; }
+  .nextCase button { min-height: 112px; padding: 22px 20px; }.nextCase button > b { width: 48px; height: 48px; font-size: 21px; }
   .footerTop { grid-template-columns: 1fr; gap: 22px; }.footerBottom { flex-direction: column; }
 }
 
@@ -462,6 +472,7 @@
   .formationHero { grid-template-columns: 32px 1fr; }.formationSide { gap: 19px; }.formationSide strong, .formationSide .formationActive { width: 23px; height: 23px; }.formationMain { padding: 8px; }.formationFeature { min-height: 178px; padding: 13px; }.formationFeatureCopy { width: 72%; }.formationFeatureCopy h2 { font-size: 20px; }.formationFeatureCopy p { max-width: 220px; font-size: 6px; }.formationArt { top: 32px; right: 5px; width: 78px; height: 78px; }.formationArt i { font-size: 18px; }.formationArt span { display: none; }.formationCards { gap: 4px; }.formationCards article > div { height: 49px; }.formationCards article > b { font-size: 5px; }
   .elderMobileHero { display: flex; min-height: 520px; justify-content: center; padding: 12px 8px 0; }.elderMobileCopy { display: none; }.elderPhone { width: 280px; height: 489px; }
   .resourceHero { display: block; min-height: 590px; padding: 27px 20px 18px; }.resourceCopy { max-width: 360px; }.resourceCopy h2 { max-width: 330px; font-size: 34px; }.resourceStack { min-height: 330px; margin-top: 12px; transform: scale(.85); transform-origin: top center; }
+  .nextCase strong { font-size: 23px; }
   .meta { grid-template-columns: 1fr; }.meta > div { padding: 0 0 10px !important; border-right: 0; border-bottom: 1px solid var(--line); }.meta > div:last-child { border-bottom: 0; }
   .impacts { grid-template-columns: 1fr; }.impacts > div { min-height: 165px; border-right: 0; border-bottom: 1px solid var(--line); }.impacts > div:last-child { border-bottom: 0; }
 }
